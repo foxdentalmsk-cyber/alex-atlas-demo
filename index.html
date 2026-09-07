@@ -1,14 +1,3111 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ALEX ATLAS — стратегия, сайты, CRM, контент и сопровождение проектов." />
-    <title>ALEX ATLAS</title>
-    <script type="module" crossorigin src="/alex-atlas-demo/assets/index-BjAYCMqZ.js"></script>
-    <link rel="stylesheet" crossorigin href="/alex-atlas-demo/assets/index-D-aN_KV8.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ALEX ATLAS — рабочая версия</title>
+<style>
+:root{--paper:#f7f7f2;--ink:#102631;--muted:#667b84;--orange:#f28a13;--line:rgba(66,94,107,.17)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit} button,input{font:inherit}
+.topbar{position:fixed;z-index:100;top:0;left:0;right:0;height:72px;padding:0 6vw;display:flex;align-items:center;background:rgba(247,247,242,.90);backdrop-filter:blur(18px);border-bottom:1px solid rgba(57,82,94,.06)}
+.brand{font-size:17px;letter-spacing:.34em;font-weight:800} .brand span{display:block;margin-top:4px;font-size:7px;letter-spacing:.2em;color:#7d8c92;font-weight:500}
+.topbar nav{margin:auto;display:flex;gap:34px;font-size:10px} .nav-cta{font-size:10px;font-weight:800;border:1px solid #81919a;padding:12px 17px}
+
+.world{position:relative;height:1480px;overflow:hidden;background:var(--paper)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(72,101,114,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(72,101,114,.03) 1px,transparent 1px);background-size:88px 88px;pointer-events:none}
+.art{position:absolute;pointer-events:none} .art svg{display:block;width:100%;height:100%;overflow:visible}
+.hero-art{left:24vw;right:-5vw;top:56px;height:800px}
+.method-art{left:16vw;right:10vw;top:710px;height:760px}
+.hero-copy{position:absolute;z-index:10;left:6.3vw;top:132px;width:520px}
+.eyebrow,.kicker{font-size:10px;letter-spacing:.18em;font-weight:800;color:#5f7884}
+.hero-copy h1{font-size:clamp(64px,5.15vw,96px);line-height:.89;letter-spacing:-.055em;margin:14px 0 20px}
+.hero-copy h1 span{font-weight:500;color:#75868d} .hero-copy p{font-size:17px;line-height:1.42;max-width:500px;color:#314d59;margin:0}
+.cta{display:inline-flex;align-items:center;gap:27px;margin-top:18px;background:var(--orange);color:white;font-size:11px;font-weight:800;padding:17px 23px}
+.metrics{display:flex;gap:30px;margin-top:27px} .metrics div{padding-left:13px;border-left:1px solid #ccd5d7;min-width:108px}
+.metrics strong{font-size:25px;line-height:1;display:block} .metrics span{font-size:9px;line-height:1.3;text-transform:uppercase;color:#60747d;display:block;margin-top:6px}
+.hero-index{position:absolute;right:3vw;top:108px;z-index:12;display:grid;gap:22px;font-size:10px;color:#617782} .hero-index:before{content:"";position:absolute;right:5px;top:15px;bottom:15px;width:1px;background:#91a3ab} .hero-index span{padding-right:25px}
+.method-copy{position:absolute;z-index:14;left:6.3vw;top:895px;width:365px} .method-copy h2{font-size:clamp(48px,4vw,72px);line-height:.94;letter-spacing:-.05em;margin:12px 0 16px} .method-copy>p{font-size:15px;line-height:1.5;color:#536b75}
+.tasks{margin:23px 0 24px} .tasks button{display:block;position:relative;width:100%;border:0;background:none;text-align:left;padding:9px 0 9px 28px;font-size:14px;font-weight:700;color:#28414c;cursor:pointer}
+.tasks button:before{content:"";position:absolute;left:0;top:50%;width:8px;height:8px;border-radius:50%;border:1px solid #78919c;background:var(--paper);transform:translateY(-50%)} .tasks button:after{content:"";position:absolute;left:4px;top:calc(50% + 7px);width:1px;height:23px;background:#9baab0} .tasks button:last-child:after{display:none} .tasks .active{color:var(--orange)} .tasks .active:before{background:var(--orange);border-color:var(--orange)}
+.text-link{font-size:10px;font-weight:800}
+.route{position:absolute;z-index:18;left:31vw;top:1005px;width:42vw;height:255px;pointer-events:none} .route svg{width:100%;height:100%;overflow:visible}
+.route-base{fill:none;stroke:rgba(242,138,19,.025);stroke-width:.8;stroke-linecap:round}
+.comet-glow-long{fill:none;stroke:rgba(255,146,18,.16);stroke-width:22;stroke-linecap:round;stroke-linejoin:round;filter:blur(10px)}
+.comet-glow-mid{fill:none;stroke:rgba(255,152,26,.38);stroke-width:11;stroke-linecap:round;stroke-linejoin:round;filter:blur(4px)}
+.comet-core-tail{fill:none;stroke:#ff9a1f;stroke-width:3.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 7px rgba(242,138,19,.95))}
+.ember{fill:#ff9418;opacity:0;filter:drop-shadow(0 0 3px rgba(255,148,24,.95)) drop-shadow(0 0 8px rgba(242,138,19,.55))}
+.meteor-halo{fill:rgba(242,138,19,.40);filter:blur(9px)} .meteor-core{fill:#fffaf0;stroke:#f28a13;stroke-width:3.4;filter:drop-shadow(0 0 15px rgba(242,138,19,1))}
+.checkpoint{fill:rgba(247,247,242,.96);stroke:rgba(242,138,19,.45);stroke-width:2;opacity:.58;transform-box:fill-box;transform-origin:center} .checkpoint.hit{animation:checkpointBurst .8s ease-out}
+.checkpoint-ring{fill:none;stroke:var(--orange);stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center} .checkpoint-ring.hit{animation:ringBurst .9s ease-out}
+.route-label{position:absolute;z-index:3;opacity:0;transform:translateY(9px) scale(.98);transition:opacity .42s ease,transform .42s cubic-bezier(.2,.8,.2,1);font-weight:800;text-transform:uppercase;text-shadow:0 1px 0 rgba(247,247,242,.98),0 0 12px rgba(247,247,242,1),0 0 26px rgba(247,247,242,1)}
+.route-label:before{content:"";position:absolute;z-index:-1;inset:-14px -18px;border-radius:50%;background:radial-gradient(ellipse,rgba(247,247,242,.94) 0 30%,rgba(247,247,242,.66) 48%,transparent 76%);filter:blur(4px)} .route-label strong{display:block;font-size:18px;line-height:1;margin-bottom:5px;color:var(--orange)} .route-label span{display:block;font-size:12px;line-height:1.16} .route-label.on{opacity:1;transform:none}
+.route-label.one{left:16%;top:51%} .route-label.two{left:53%;top:5%} .route-label.three{left:83%;top:53%}
+.panel{position:absolute;z-index:15;right:6vw;top:900px;width:350px} .panel:before{content:"";display:block;width:28px;height:2px;background:var(--orange);margin-bottom:12px} .panel h3{font-size:27px;margin:0 0 12px} .panel>p{font-size:15px;line-height:1.48;color:#4f6670} .panel ul{list-style:none;padding:0;margin:18px 0} .panel li{position:relative;padding:10px 0 10px 24px;border-bottom:1px solid var(--line);font-size:14px} .panel li:before{content:"✓";position:absolute;left:0;color:var(--orange)}
+.mini-form label{display:block;padding:10px 0;border-bottom:1px solid rgba(70,96,107,.22)} .mini-form label span{display:block;font-size:11px;color:#71838a;margin-bottom:5px} .mini-form input{width:100%;border:0;background:transparent;outline:none;font-size:15px;padding:3px 0} .mini-form button{margin-top:16px;border:0;background:#163541;color:#fff;padding:14px 17px;font-size:11px;font-weight:800}
+.moscow{position:absolute;right:5vw;top:1372px;font-size:9px;letter-spacing:.18em;color:#617782}
+
+.transition{position:absolute;z-index:30;left:-10vw;right:-10vw;bottom:-55px;height:230px;background:linear-gradient(180deg,rgba(247,247,242,0) 0,rgba(247,247,242,.70) 31%,#f7f7f2 74%);border-radius:50% 50% 0 0/52% 52% 0 0;filter:blur(.2px);pointer-events:none}
+.scroll-cue{position:absolute;z-index:40;left:50%;bottom:76px;transform:translateX(-50%);font-size:8px;color:#768991;text-align:center;letter-spacing:.03em} .mouse{width:15px;height:25px;border:1px solid #38505a;border-radius:8px;margin:0 auto 5px;position:relative} .mouse:after{content:"";position:absolute;left:50%;top:5px;width:2px;height:5px;border-radius:2px;background:#38505a;transform:translateX(-50%);animation:wheel 1.5s infinite}
+
+.projects{position:relative;min-height:1100px;margin-top:-118px;padding:196px 5.6vw 90px;background:linear-gradient(180deg,#f7f7f2 0,#f4f1ea 58%,#f7f7f2 100%);overflow:hidden}
+.projects:before{content:"";position:absolute;left:0;right:0;top:0;height:330px;
+background:linear-gradient(180deg,rgba(247,247,242,0) 0,rgba(247,247,242,.72) 28%,#f7f7f2 78%);
+pointer-events:none;z-index:1}
+.projects:after{content:"";position:absolute;left:-8vw;right:-8vw;top:92px;height:350px;
+background:radial-gradient(ellipse at 61% 44%,rgba(255,255,255,.88),rgba(247,247,242,.50) 48%,transparent 77%);
+filter:blur(24px);pointer-events:none;z-index:1}
+.pwrap{position:relative;z-index:3;max-width:1560px;margin:auto}
+.project-grid{display:grid;grid-template-columns:33% 67%;align-items:start;gap:1vw}
+.project-copy{padding-top:22px;z-index:5} .project-copy h2{font-size:clamp(60px,5.1vw,91px);line-height:.86;letter-spacing:-.06em;margin:12px 0 22px} .project-copy h2 span{font-weight:500;color:#778990} .project-copy .lead{font-size:22px;line-height:1.18;color:#6b7e86;margin:0 0 14px} .project-copy .desc{font-size:16px;line-height:1.45;color:#5e737c;max-width:430px;margin:0}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:34px 0 20px} .tab{border:0;background:none;padding:0;text-align:left;color:#8a9ba2;cursor:pointer;position:relative} .tab strong{display:block;font-size:22px;line-height:1} .tab span{display:block;margin-top:7px;font-size:9px;line-height:1.2;font-weight:800;text-transform:uppercase} .tab.active{color:var(--orange)} .tab:disabled{cursor:default;opacity:.55} .tab.active:before{content:"";position:absolute;left:-13px;top:-4px;width:2px;height:58px;background:var(--orange)} .tab.active:after{content:"";position:absolute;left:-16px;top:-5px;width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.pnav{display:flex;gap:12px;margin:24px 0} .round{width:44px;height:44px;border-radius:50%;border:1px solid #acb9be;background:rgba(247,247,242,.75);display:grid;place-items:center;font-size:20px;color:#61757e;cursor:pointer} .actions{display:flex;gap:12px;flex-wrap:wrap} .actions button{padding:14px 20px;font-size:10px;font-weight:800;border:1px solid #87979e;background:rgba(247,247,242,.78);color:var(--ink);cursor:pointer} .actions .primary{background:#163541;color:white;border-color:#163541} .quote{margin-top:24px;font-size:15px;font-style:italic;color:#71838a}
+
+
+.scene-wrap{position:relative;width:100%;aspect-ratio:1036/690;margin-top:-20px;overflow:visible}
+.scene-wrap:before{content:"";position:absolute;z-index:0;inset:-8% -7% -10%;background:radial-gradient(ellipse at 52% 47%,rgba(235,228,216,.50) 0 38%,rgba(247,247,242,.20) 61%,transparent 80%);filter:blur(24px)}
+.scene-plane{position:absolute;z-index:1;inset:-2.5% -2% -3.5% -2%;transform:scale(1.02);transform-origin:center;
+-webkit-mask-image:radial-gradient(ellipse 72% 66% at 51% 51%,#000 0 51%,rgba(0,0,0,.96) 63%,rgba(0,0,0,.54) 76%,rgba(0,0,0,.12) 89%,transparent 100%);
+mask-image:radial-gradient(ellipse 72% 66% at 51% 51%,#000 0 51%,rgba(0,0,0,.96) 63%,rgba(0,0,0,.54) 76%,rgba(0,0,0,.12) 89%,transparent 100%)}
+.scene-img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.scene-plane:before{content:"";position:absolute;z-index:8;left:-1px;right:-1px;top:-1px;height:20%;
+background:linear-gradient(180deg,#f7f7f2 0,rgba(247,247,242,.88) 17%,rgba(247,247,242,.35) 56%,transparent 100%);pointer-events:none}
+.scene-plane:after{content:"";position:absolute;z-index:8;left:-1px;right:-1px;bottom:-1px;height:14%;
+background:linear-gradient(0deg,#f7f7f2 0,rgba(247,247,242,.72) 22%,transparent 100%);pointer-events:none}
+.device-screen{position:absolute;z-index:6;overflow:hidden;background:#070b0d;opacity:0;transition:opacity .28s ease,filter .28s ease}
+.laptop-screen{left:10.65%;top:17.55%;width:60.15%;height:54.65%;clip-path:polygon(2.3% 3.0%,98.4% 1.0%,96.0% 98.0%,1.0% 96.6%)}
+.phone-screen{left:71.15%;top:35.55%;width:15.05%;height:47.25%;border-radius:20px;clip-path:polygon(6.8% 2.5%,95.5% 3.2%,89.5% 97.6%,1.6% 96.5%)}
+.screen-off{position:absolute;z-index:20;inset:0;background:radial-gradient(circle at 50% 12%,#1b2529 0,#081013 45%,#010304 100%);opacity:1;transition:opacity .8s cubic-bezier(.2,.8,.2,1)}
+.screen-off:after{content:"";position:absolute;left:8%;right:8%;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);opacity:0;transform:scaleX(.12)}
+.scene-wrap.booting .device-screen{opacity:1}.scene-wrap.booting .screen-off:after{animation:scan .65s ease-out}.scene-wrap.awake .screen-off{opacity:0}
+.scene-wrap.project-alt .device-screen{opacity:1}
+.screen-content{position:absolute;inset:0;background:#f7f3ea;overflow:hidden}
+.screen-content img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center center;display:block;background:#f7f3ea}
+.phone-screen .screen-content img{object-fit:cover;object-position:50% 7%;transform:scale(1.02)}
+.project-state{position:absolute;left:13%;bottom:1%;z-index:10;font-size:8px;letter-spacing:.16em;color:#7d8e95}.project-state:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#909ba0;margin-right:8px}.scene-wrap.awake .project-state:before{background:var(--orange);box-shadow:0 0 12px rgba(242,138,19,.9)}
+
+
+.process{margin-top:82px;position:relative} .track{display:grid;grid-template-columns:1fr .30fr 1fr .30fr 1fr .30fr 1fr .30fr 1fr .30fr 1fr;align-items:start}
+.item{text-align:center} .icon{width:86px;height:86px;margin:0 auto 13px;border:1px solid #c9d3d6;border-radius:50%;background:rgba(247,247,242,.98);display:grid;place-items:center;transition:.4s} .icon svg{width:56px;height:56px;overflow:visible} .item h4{font-size:13px;margin:0 0 7px} .item p{font-size:11px;line-height:1.35;color:#71838b;margin:0 auto;max-width:165px} .item.active .icon{border-color:rgba(242,138,19,.76);box-shadow:0 0 30px rgba(242,138,19,.17);transform:scale(1.055)}
+.link{height:2px;margin-top:42px;background:#d6dcde;position:relative} .fill{position:absolute;left:0;top:-1px;width:0;height:3px;background:var(--orange);box-shadow:0 0 10px rgba(242,138,19,.48);transition:width .9s cubic-bezier(.2,.8,.2,1)} .spark{position:absolute;left:-2px;top:-4px;width:9px;height:9px;border-radius:50%;background:var(--orange);opacity:0;box-shadow:0 0 10px rgba(242,138,19,.72)} .link.run .fill{width:100%} .link.run .spark{animation:spark .9s cubic-bezier(.2,.8,.2,1)}
+.rays{opacity:0;transition:.35s} .glass{fill:transparent;transition:.35s} .item.active .rays{opacity:1;filter:drop-shadow(0 0 6px rgba(242,138,19,.9))} .item.active .glass{fill:rgba(255,190,66,.45)} .item.active .bulb{stroke:#f28a13;filter:drop-shadow(0 0 5px rgba(242,138,19,.8))}
+.dart{opacity:0;transform:translate(23px,-23px);transition:transform .65s cubic-bezier(.16,.9,.3,1.15),opacity .12s} .item.active .dart{opacity:1;transform:none}
+.siteui{opacity:0;transition:.45s .2s} .item.active .siteui{opacity:1}
+.cell{fill:#e1e7e8;transition:fill .25s} .item.active .c1{fill:#76acf4;transition-delay:.10s} .item.active .c2{fill:#ef9f52;transition-delay:.30s} .item.active .c3{fill:#7bc78b;transition-delay:.50s} .item.active .c4{fill:#b49ae2;transition-delay:.70s}
+.photo{opacity:0;transform:scale(.82);transform-origin:center;transition:.5s} .item.active .photo{opacity:1;transform:scale(1)} .g1,.g2{transform-box:fill-box;transform-origin:center} .g2{opacity:0;transform:translate(13px,-9px);transition:.42s} .item.active .g2{opacity:1;transform:none;animation:ccw 1.4s .35s linear infinite} .item.active .g1{animation:cw 1.8s .35s linear infinite}
+.cycle{display:flex;align-items:center;justify-content:flex-end;gap:9px;margin-top:26px;font-size:9px;letter-spacing:.11em;color:#7e8e94} .cycle .bar{width:55px;height:1px;background:#bec9cd;position:relative} .cycle .bar:before{content:"";position:absolute;left:0;top:-1px;width:20px;height:3px;background:#173541}
+
+@keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}100%{opacity:0;transform:translate(-50%,8px)}}
+@keyframes checkpointBurst{0%{transform:scale(1)}35%{transform:scale(1.75);filter:drop-shadow(0 0 11px rgba(242,138,19,.95))}100%{transform:scale(1.08)}}
+@keyframes ringBurst{0%{opacity:.95;transform:scale(.6)}100%{opacity:0;transform:scale(3.5)}}
+@keyframes scan{0%{opacity:0;transform:scaleX(.12)}30%{opacity:1}100%{opacity:0;transform:scaleX(1)}}
+@keyframes spark{0%{left:-2px;opacity:0}15%{opacity:1}88%{opacity:1}100%{left:calc(100% - 6px);opacity:0}}
+@keyframes cw{to{transform:rotate(360deg)}} @keyframes ccw{to{transform:rotate(-360deg)}}
+
+@media(max-width:1150px){
+ .topbar nav{display:none} .hero-copy{width:44vw} .hero-art{left:22vw;right:-10vw} .method-art{left:4vw;right:0} .route{left:33vw;width:37vw} .panel{right:3vw;width:310px} .method-copy{width:31vw}
+ .project-grid{grid-template-columns:1fr} .scene-wrap{margin-top:30px;height:min(64vw,620px)} .project-copy{max-width:720px} .tabs{max-width:650px} .track{grid-template-columns:repeat(3,1fr);gap:28px} .link{display:none} .projects{padding-top:85px}
+}
+@media(max-width:760px){
+ .topbar{padding:0 20px} .brand{font-size:14px} .nav-cta{font-size:8px;padding:10px 12px}
+ .world{height:1450px} .hero-copy{left:24px;top:110px;width:82vw} .hero-copy h1{font-size:50px} .hero-art{left:5vw;right:-70vw;top:240px;opacity:.8} .metrics{gap:10px} .metrics div{min-width:86px}
+ .method-copy{left:24px;top:830px;width:78vw} .method-art{left:-35vw;right:-45vw;top:770px;opacity:.78} .route{left:12vw;top:1165px;width:76vw} .panel{display:none}
+ .projects{margin-top:-70px;padding:130px 22px 60px} .project-copy h2{font-size:54px} .project-copy .lead{font-size:20px} .tabs{grid-template-columns:repeat(2,1fr)} .scene-wrap{height:67vw;min-height:360px} .track{grid-template-columns:repeat(2,1fr)} .cycle{justify-content:center}
+}
+</style>
+
+<style id="atlas-seam-test">
+/* SEAM TEST: clean project scene, one independent object only */
+.projects,
+.projects-section,
+#projects,
+.project-scene,
+.projects-scene {
+    background: #fbfaf6 !important;
+}
+.atlas-seam-test {
+    position: relative;
+    width: 100%;
+    min-height: 660px;
+    background: #fbfaf6;
+    overflow: hidden;
+}
+.atlas-seam-test__object {
+    background: transparent !important;
+    position: absolute;
+    left: 18%;
+    top: 42px;
+    width: min(31vw, 570px);
+    height: auto;
+    display: block;
+    mix-blend-mode: normal;
+}
+@media (max-width: 900px) {
+    .atlas-seam-test { min-height: 560px; }
+    .atlas-seam-test__object {
+    background: transparent !important;
+        left: 4vw;
+        top: 50px;
+        width: min(66vw, 520px);
+    }
+}
+</style>
+
+</head>
+<body>
+<header class="topbar">
+<a class="brand" href="#">ALEX ATLAS<span>ИДЕИ → СТРУКТУРА → РЕЗУЛЬТАТ</span></a>
+<nav><a href="#method">УСЛУГИ</a><a href="#projects">ПРОЕКТЫ</a><a href="#method">ПОДХОД</a><a href="#projects">ОБО МНЕ</a></nav>
+<a class="nav-cta" href="#projects">ОБСУДИТЬ ПРОЕКТ →</a>
+</header>
+
+<main class="world">
+<div class="grid"></div>
+<div class="art hero-art"><svg viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid meet"><defs><filter id="heroBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="48"/></filter><mask id="heroMask"><rect width="1672" height="941" fill="black"/><g fill="white" filter="url(#heroBlur)"><ellipse cx="1080" cy="475" rx="620" ry="390"/><ellipse cx="1430" cy="525" rx="330" ry="330"/><ellipse cx="860" cy="665" rx="470" ry="235"/></g></mask></defs><image href="city/hero-construction-v2.webp" width="1672" height="941" mask="url(#heroMask)" preserveAspectRatio="xMidYMid slice"/></svg></div>
+
+<section class="hero-copy">
+<div class="eyebrow">ИССЛЕДОВАНИЕ · СТРАТЕГИЯ · РЕАЛИЗАЦИЯ</div>
+<h1>ПРЕВРАЩАЮ<br>ИДЕИ В<br><span>ПОНЯТНЫЕ</span><br><span>ПРОДУКТЫ</span></h1>
+<p>Изучаю задачу, нахожу сильное направление и собираю всё в одну систему: предложение, тексты, визуал и сайт.</p>
+<a class="cta" href="#method">РАЗОБРАТЬ МОЙ ПРОЕКТ <b>→</b></a>
+<div class="metrics"><div><strong>01</strong><span>разбираюсь<br>в задаче</span></div><div><strong>02</strong><span>предлагаю<br>2–3 направления</span></div><div><strong>03</strong><span>собираю<br>решение</span></div></div>
+</section>
+<div class="hero-index"><span>01</span><span>02</span><span>03</span><span>04</span></div>
+
+<div id="method" class="art method-art"><svg viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid meet"><defs><filter id="cityBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="54"/></filter><mask id="cityMask"><rect width="1672" height="941" fill="black"/><g fill="white" filter="url(#cityBlur)"><ellipse cx="840" cy="500" rx="690" ry="360"/><ellipse cx="470" cy="555" rx="360" ry="310"/><ellipse cx="1180" cy="545" rx="420" ry="300"/><ellipse cx="850" cy="760" rx="570" ry="190"/></g></mask></defs><image href="city/04-city.webp" width="1672" height="941" mask="url(#cityMask)" preserveAspectRatio="xMidYMid slice"/></svg></div>
+
+<section class="method-copy">
+<div class="kicker">01 · НАЧАЛО РАБОТЫ</div><h2>КАКУЮ ЗАДАЧУ<br>МЫ РЕШАЕМ?</h2>
+<p>Выберите свою ситуацию. Вы увидите не название услуги, а конкретный план, результат и риск.</p>
+<div class="tasks"><button class="active">Запустить идею</button><button>Переупаковать продукт</button><button>Создать сайт</button><button>Найти отличие</button></div>
+<a class="text-link">ПОСМОТРЕТЬ ПОДРОБНЕЕ →</a>
+</section>
+
+<div class="route"><svg viewBox="0 0 900 300" preserveAspectRatio="none"><path id="routePath" class="route-base" d="M10 225 C145 208 170 132 285 145 C405 160 430 215 520 110 C630 -15 665 220 800 180 C842 168 870 143 900 145"/><g id="tailGlowGroup"></g><g id="tailCoreGroup"></g><g id="emberGroup"></g><circle class="checkpoint cp1" r="7"/><circle class="checkpoint-ring r1" r="8"/><circle class="checkpoint cp2" r="7"/><circle class="checkpoint-ring r2" r="8"/><circle class="checkpoint cp3" r="7"/><circle class="checkpoint-ring r3" r="8"/><circle class="meteor-halo" r="18"/><circle class="meteor-core" r="7"/></svg><div class="route-label one"><strong>01</strong><span>РАЗБИРАЮСЬ<br>В ЗАДАЧЕ</span></div><div class="route-label two"><strong>02</strong><span>ПРЕДЛАГАЮ<br>2–3 НАПРАВЛЕНИЯ</span></div><div class="route-label three"><strong>03</strong><span>СОБИРАЮ<br>РЕШЕНИЕ</span></div></div>
+
+<aside class="panel"><h3>ЗАПУСТИТЬ ИДЕЮ</h3><p>Разберём, кому и зачем нужен будущий продукт — до того, как начнём тратить деньги на его оформление.</p><ul><li>Изучим рынок и конкурентов</li><li>Проведём интервью и уточним задачу</li><li>Предложим 2–3 стратегии запуска</li></ul><form class="mini-form" id="atlasLeadForm">
+<label><span>Как к вам обращаться</span><input id="atlasLeadName" name="name" placeholder="Ваше имя" autocomplete="name"></label>
+<label><span>Телефон или Telegram</span><input id="atlasLeadContact" name="contact" placeholder="+7 или @username" autocomplete="tel"></label>
+<button id="atlasLeadSubmit" type="submit">ПОДГОТОВИТЬ ЗАЯВКУ →</button>
+<div class="atlas-lead-status" id="atlasLeadStatus" aria-live="polite"></div>
+</form></aside>
+<div class="moscow">МОСКВА · 2026</div>
+<div class="scroll-cue"><div class="mouse"></div>ЛИСТАЙТЕ ДАЛЬШЕ</div>
+<div class="transition"></div>
+</main>
+
+
+<section class="projects projects-reset" id="projects">
+<div class="atlas-seam-test" aria-label="Тест стыка блока проектов">
+  <div class="projects-copy">
+    <div class="projects-copy__kicker">02 · ПРОЕКТЫ</div>
+    <h2>РЕАЛЬНЫЕ<br><span>ПРОДУКТЫ</span></h2>
+    <p>Три разные задачи. Один подход.<br>
+    От идеи и позиционирования — до работающего продукта.</p>
+    <div class="projects-copy__note"><i></i> ПОКАЗАНА ТОЛЬКО ЧАСТЬ ПРОЕКТОВ</div>
+  </div>
+
+  <img class="atlas-seam-test__object project-hit" data-project="bezcen" role="button" tabindex="0" aria-label="Открыть проект Бесценная стоматология"
+       src="assets/atlas-img-03.webp"
+       alt="Бесценная стоматология">
+
+  <img class="atlas-seam-test__object atlas-seam-test__object--avi project-hit" data-project="avi" role="button" tabindex="0" aria-label="Открыть проект AVI клиника"
+       src="assets/atlas-img-04.webp"
+       alt="AVI клиника">
+  <img class="atlas-seam-test__object atlas-seam-test__object--third project-hit" data-project="crm" role="button" tabindex="0" aria-label="Открыть проект CRM для клиники"
+       src="assets/atlas-img-05.webp"
+       alt="Третий проект">
+</div>
+<div class="process" id="process">
+<div class="track">
+<div class="item" data-step="0"><div class="icon"><svg viewBox="0 0 64 64"><g fill="none" stroke="#254451" stroke-width="2.2" stroke-linecap="round"><path class="bulb" d="M23 39c-4-3-7-7-7-13a16 16 0 0 1 32 0c0 6-3 10-7 13-2 2-3 4-3 7H26c0-3-1-5-3-7Z"/><path d="M27 51h10M29 56h6"/><g class="rays"><path d="M32 3v7M9 26H2M62 26h-7M14 8l5 5M50 8l-5 5"/></g></g><path class="glass" d="M23 39c-4-3-7-7-7-13a16 16 0 0 1 32 0c0 6-3 10-7 13-2 2-3 4-3 7H26c0-3-1-5-3-7Z"/></svg></div><h4>ИДЕЯ</h4><p>Честный формат<br>и новая ценность</p></div>
+<div class="link"><div class="fill"></div><div class="spark"></div></div>
+<div class="item" data-step="1"><div class="icon"><svg viewBox="0 0 64 64"><g fill="none" stroke="#254451" stroke-width="2.2"><circle cx="30" cy="34" r="20"/><circle cx="30" cy="34" r="12"/><circle cx="30" cy="34" r="4"/></g><g class="dart" stroke="#f28a13" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 56 L30 34"/><path d="M30 34 L23 34"/><path d="M30 34 L30 41"/></g></svg></div><h4>ПОЗИЦИОНИРОВАНИЕ</h4><p>Смысл, который<br>отличает</p></div>
+<div class="link"><div class="fill"></div><div class="spark"></div></div>
+<div class="item" data-step="2"><div class="icon"><svg viewBox="0 0 64 64"><rect x="10" y="12" width="44" height="31" rx="3" fill="#173541"/><g class="siteui"><rect x="14" y="16" width="36" height="23" rx="1" fill="#eef5f6"/><path d="M18 33l9-8 7 5 8-9" fill="none" stroke="#65a8f1" stroke-width="2.2"/><circle cx="42" cy="21" r="2.5" fill="#f28a13"/></g><path d="M25 49h14M32 43v6" stroke="#254451" stroke-width="2.2"/></svg></div><h4>САЙТ</h4><p>Понятный и<br>эмоциональный</p></div>
+<div class="link"><div class="fill"></div><div class="spark"></div></div>
+<div class="item" data-step="3"><div class="icon"><svg viewBox="0 0 64 64"><rect x="10" y="10" width="44" height="44" rx="5" fill="none" stroke="#254451" stroke-width="2"/><rect class="cell c1" x="15" y="15" width="14" height="14" rx="2"/><rect class="cell c2" x="35" y="15" width="14" height="14" rx="2"/><rect class="cell c3" x="15" y="35" width="14" height="14" rx="2"/><rect class="cell c4" x="35" y="35" width="14" height="14" rx="2"/></svg></div><h4>CRM</h4><p>Удобная запись<br>и ведение пациентов</p></div>
+<div class="link"><div class="fill"></div><div class="spark"></div></div>
+<div class="item" data-step="4"><div class="icon"><svg viewBox="0 0 64 64"><rect x="9" y="12" width="46" height="40" rx="4" fill="none" stroke="#254451" stroke-width="2.2"/><g class="photo"><circle cx="44" cy="23" r="5" fill="#f0a053"/><path d="M13 45l12-12 8 7 7-8 11 13" fill="#9bc6ea" stroke="#254451" stroke-width="1.5"/></g></svg></div><h4>КОНТЕНТ</h4><p>Сторис, креативы,<br>видео</p></div>
+<div class="link"><div class="fill"></div><div class="spark"></div></div>
+<div class="item" data-step="5"><div class="icon"><svg viewBox="0 0 64 64"><g class="g1" fill="none" stroke="#254451" stroke-width="2.2"><circle cx="26" cy="36" r="11"/><circle cx="26" cy="36" r="4"/><path d="M26 19v5M26 48v5M9 36h5M38 36h5M14 24l4 4M34 44l4 4M14 48l4-4M34 28l4-4"/></g><g class="g2" fill="none" stroke="#4d7182" stroke-width="2.1"><circle cx="43" cy="20" r="8"/><circle cx="43" cy="20" r="3"/><path d="M43 8v4M43 28v4M31 20h4M51 20h4M35 12l3 3M48 25l3 3M35 28l3-3M48 15l3-3"/></g></svg></div><h4>ПРОЦЕССЫ</h4><p>От первого контакта<br>до повторного визита</p></div>
+</div>
+<div class="cycle"><div class="bar"></div><span>01 / 04</span></div>
+</div>
+    </div>
+  </div>
+</section>
+
+
+<section class="approach-section" id="approach">
+  <div class="approach-canvas">
+    <svg class="approach-particle-route" id="approachParticleRoute" aria-hidden="true">
+      <defs>
+        <filter id="atlasPulseGlow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <g id="approachRouteSegments"></g>
+      <g id="approachPulse" filter="url(#atlasPulseGlow)">
+        <circle class="pulse-tail p4" r="2.2"></circle>
+        <circle class="pulse-tail p3" r="3.0"></circle>
+        <circle class="pulse-tail p2" r="3.8"></circle>
+        <circle class="pulse-tail p1" r="4.8"></circle>
+        <circle class="pulse-core" r="6.4"></circle>
+      </g>
+    </svg>
+
+    
+    <div class="approach-head">
+      <div class="approach-kicker">03 · ПОДХОД</div>
+      <h2>КАК Я РАБОТАЮ<br><span>НАД ПРОЕКТАМИ</span></h2>
+      <p>Системный подход, который превращает<br>идею в работающий продукт. От анализа<br>до измеримого результата.</p>
+      <div class="approach-proof"><i></i> ПРОВЕРЕНО НА РЕАЛЬНЫХ ПРОЕКТАХ</div>
+    </div>
+
+    <div class="approach-quote">«Хороший результат<br>— это не случайность,<br>а последовательность<br>правильных шагов»</div>
+
+    <div class="approach-road" aria-hidden="true">
+      <svg viewBox="0 0 1600 900" preserveAspectRatio="none">
+        <defs>
+          <filter id="roadShadow" x="-20%" y="-30%" width="140%" height="170%">
+            <feGaussianBlur stdDeviation="9"/>
+          </filter>
+          <linearGradient id="roadGold" x1="0" x2="1">
+            <stop offset="0" stop-color="#f6d7a0"/>
+            <stop offset=".5" stop-color="#f28a13"/>
+            <stop offset="1" stop-color="#f7dfb4"/>
+          </linearGradient>
+        </defs>
+        <path class="road-shadow" d="M80 705 C250 720 230 515 430 510 S585 655 720 625 S755 360 940 350 S1035 630 1160 600 S1265 355 1515 330"/>
+        <path class="road-main" d="M80 705 C250 720 230 515 430 510 S585 655 720 625 S755 360 940 350 S1035 630 1160 600 S1265 355 1515 330"/>
+        <path class="road-edge" d="M80 705 C250 720 230 515 430 510 S585 655 720 625 S755 360 940 350 S1035 630 1160 600 S1265 355 1515 330"/>
+      </svg>
+    </div>
+
+    <div class="step s1" tabindex="0" role="button" aria-label="Активировать этап 1">
+      <div class="step-copy"><b>01</b><h3>СНАЧАЛА ПОНЯТЬ</h3><p>Разбираюсь в ситуации,<br>целях и контексте. Задаю<br>правильные вопросы.</p></div>
+      <img src="assets/atlas-img-06.webp" alt="Анализ">
+    </div>
+
+    <div class="step s2" tabindex="0" role="button" aria-label="Активировать этап 2">
+      <div class="step-copy"><b>02</b><h3>НАЙТИ ГЛАВНОЕ</h3><p>Определяю настоящую<br>проблему. Что именно<br>мешает росту: продукт,<br>позиционирование,<br>подача или процессы?</p></div>
+      <img src="assets/atlas-img-07.webp" alt="Поиск главного">
+    </div>
+
+    <div class="step s3" tabindex="0" role="button" aria-label="Активировать этап 3">
+      <img src="assets/atlas-img-08.webp" alt="Выбор пути">
+      <div class="step-copy"><b>03</b><h3>ВЫБРАТЬ ПУТЬ</h3><p>Предлагаю 2–3 сильных<br>направления с понятными<br>плюсами, рисками и<br>ожидаемыми результатами.</p></div>
+    </div>
+
+    <div class="step s4" tabindex="0" role="button" aria-label="Активировать этап 4">
+      <div class="step-copy"><b>04</b><h3>СОБРАТЬ РЕШЕНИЕ</h3><p>Объединяю смыслы, тексты,<br>визуал и функционал в<br>единый, цельный продукт.</p></div>
+      <img src="assets/atlas-img-09.webp" alt="Сборка решения">
+    </div>
+
+    <div class="step s5" tabindex="0" role="button" aria-label="Активировать этап 5">
+      <div class="step-copy"><b>05</b><h3>ЗАПУСТИТЬ</h3><p>Помогаю с запуском,<br>настройкой и первыми<br>результатами. Не бросаю<br>после сдачи.</p></div>
+      <img src="assets/atlas-img-10.webp" alt="Запуск">
+    </div>
+
+    <div class="step s6" tabindex="0" role="button" aria-label="Активировать этап 6">
+      <div class="step-copy"><b>06</b><h3>ПРОВЕРИТЬ РЕЗУЛЬТАТ</h3><p>Анализируем, что сработало,<br>улучшаем и масштабируем<br>то, что даёт эффект.</p></div>
+      <img src="assets/atlas-img-11.webp" alt="Проверка результата">
+    </div>
+
+    <div class="approach-final">
+      <strong>Я НЕ ПРОДАЮ САЙТ, ДИЗАЙН<br>ИЛИ РЕКЛАМУ.</strong>
+      <span>Я СОБИРАЮ РЕШЕНИЕ ПОД ЗАДАЧУ.</span>
+      <i></i>
+      <a href="#contact">ОБСУДИТЬ ПРОЕКТ →</a>
+      <small>ПРАВИЛЬНЫЕ ВОПРОСЫ<br>ПРИВОДЯТ К БОЛЬШИМ РЕЗУЛЬТАТАМ</small>
+    </div>
+  </div>
+</section>
+
+
+<style id="approach-layout-css">
+.approach-section{
+  position:relative; width:100%; background:#f8f8f3; color:#143541;
+  overflow:hidden; border:0; min-height:1020px;
+}
+.approach-canvas{
+  position:relative; width:min(100%,1920px); height:1020px; margin:0 auto;
+  background:#f8f8f3;
+}
+.approach-head{position:absolute;left:4.4%;top:42px;z-index:8}
+.approach-kicker{font:700 11px/1.2 Arial,sans-serif;letter-spacing:3px;color:#456976;margin-bottom:13px}
+.approach-head h2{margin:0;font:800 55px/.84 Arial,sans-serif;letter-spacing:-2.6px;color:#12333f}
+.approach-head h2 span{font-weight:300;color:#8aa0a8}
+.approach-head>p{font:400 14px/1.38 Arial,sans-serif;color:#486775;margin:23px 0 18px}
+.approach-proof{font:700 8px/1 Arial,sans-serif;letter-spacing:1.6px;color:#708a94}
+.approach-proof i{display:inline-block;width:28px;height:2px;background:#f28a13;margin-right:12px;vertical-align:middle}
+.approach-quote{position:absolute;right:7.5%;top:37px;text-align:right;font:400 13px/1.25 Arial,sans-serif;color:#76909a;z-index:8}
+.approach-road{position:absolute;inset:105px 0 55px;z-index:1;opacity:.92;pointer-events:none}
+.approach-road svg{width:100%;height:100%}
+.road-shadow{fill:none;stroke:#d7c8a7;stroke-width:38;opacity:.18;filter:url(#roadShadow)}
+.road-main{fill:none;stroke:#fffdf7;stroke-width:24;stroke-linecap:round;filter:drop-shadow(0 6px 7px rgba(97,76,42,.12))}
+.road-edge{fill:none;stroke:url(#roadGold);stroke-width:1.8;stroke-linecap:round;opacity:.75}
+.step{position:absolute;z-index:4}
+.step img{position:absolute;display:block;width:100%;height:auto;filter:drop-shadow(0 14px 14px rgba(65,55,30,.07))}
+.step-copy{position:absolute;z-index:6;font-family:Arial,sans-serif;color:#173845}
+.step-copy:before{content:"";position:absolute;left:-18px;top:5px;width:2px;height:39px;background:#f28a13}
+.step-copy:after{content:"";position:absolute;left:-23px;top:39px;width:12px;height:12px;border-radius:50%;background:#f28a13;box-shadow:0 0 12px rgba(242,138,19,.45)}
+.step-copy b{display:block;font-size:29px;line-height:.9;color:#f28a13;margin-bottom:5px}
+.step-copy h3{margin:0 0 8px;font-size:16px;line-height:1;font-weight:800}
+.step-copy p{margin:0;font-size:12px;line-height:1.35;color:#3f5f6b}
+
+.s1{left:2.5%;top:420px;width:390px;height:390px}.s1 img{left:-4px;top:122px;width:335px}.s1 .step-copy{left:80px;top:0}
+.s2{left:18.7%;top:260px;width:390px;height:390px}.s2 img{left:20px;top:128px;width:350px}.s2 .step-copy{left:145px;top:0}
+.s3{left:30.7%;top:505px;width:420px;height:390px}.s3 img{left:0;top:0;width:350px}.s3 .step-copy{left:235px;top:235px}
+.s4{left:42.7%;top:185px;width:470px;height:390px}.s4 img{left:5px;top:125px;width:405px}.s4 .step-copy{left:215px;top:0}
+.s5{left:57.2%;top:455px;width:430px;height:390px}.s5 img{left:0;top:65px;width:350px}.s5 .step-copy{left:260px;top:0}
+.s6{left:68.5%;top:160px;width:520px;height:390px}.s6 img{left:40px;top:125px;width:390px}.s6 .step-copy{left:270px;top:0}
+
+.approach-final{position:absolute;left:46.5%;bottom:52px;z-index:8;font-family:Arial,sans-serif}
+.approach-final strong{display:block;font-size:28px;line-height:1.03;letter-spacing:-1.2px;color:#143541}
+.approach-final span{display:block;font-size:29px;line-height:1;color:#8aa0a8;font-weight:300;margin-top:4px}
+.approach-final>i{display:block;width:38px;height:3px;background:#f28a13;margin:24px 0 20px}
+.approach-final a{display:inline-block;background:#123846;color:#fff;text-decoration:none;padding:15px 27px;font:700 10px Arial,sans-serif}
+.approach-final small{display:inline-block;margin-left:34px;vertical-align:middle;font:700 8px/1.35 Arial,sans-serif;color:#8da0a7;letter-spacing:.4px}
+
+@media(max-width:1100px){
+ .approach-canvas{height:1420px;transform-origin:top left}
+ .approach-head{left:6%}
+ .approach-quote{right:6%}
+ .s1{left:4%;top:350px}.s2{left:45%;top:300px}.s3{left:7%;top:650px}.s4{left:47%;top:610px}.s5{left:5%;top:930px}.s6{left:48%;top:900px}
+ .approach-road{display:none}
+ .approach-final{left:8%;bottom:55px}
+}
+</style>
+
+
+<script>
+
+(()=>{
+ const route=document.querySelector('.route'),path=document.getElementById('routePath');
+ const glowGroup=document.getElementById('tailGlowGroup'),coreGroup=document.getElementById('tailCoreGroup'),emberGroup=document.getElementById('emberGroup');
+ const meteor=route.querySelector('.meteor-core'),halo=route.querySelector('.meteor-halo');
+ const labels=[...route.querySelectorAll('.route-label')],cps=[...route.querySelectorAll('.checkpoint')],rings=[...route.querySelectorAll('.checkpoint-ring')];
+ const len=path.getTotalLength(), fractions=[.22,.58,.86], cpLengths=fractions.map(f=>len*f);
+ cpLengths.forEach((l,i)=>{const p=path.getPointAtLength(l);[cps[i],rings[i]].forEach(el=>{el.setAttribute('cx',p.x);el.setAttribute('cy',p.y)})});
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const NS='http://www.w3.org/2000/svg';
+ // A real tapered luminous brush: many short path-following segments.
+ // Each segment gets its own width/opacity from tail tip -> meteor head.
+ const N=52, tailLen=175, glowSeg=[], coreSeg=[];
+ for(let i=0;i<N;i++){
+   const g=document.createElementNS(NS,'line'), c=document.createElementNS(NS,'line');
+   g.setAttribute('class','tail-seg glow'); c.setAttribute('class','tail-seg');
+   glowGroup.appendChild(g); coreGroup.appendChild(c); glowSeg.push(g); coreSeg.push(c);
+ }
+ // Stationary sparks on the travelled route, independent of the comet tail.
+ const embers=[];
+ for(let l=18;l<len-10;l+=27){const p=path.getPointAtLength(l),e=document.createElementNS(NS,'circle');e.setAttribute('class','ember');e.setAttribute('cx',p.x);e.setAttribute('cy',p.y);e.setAttribute('r','2.2');emberGroup.appendChild(e);embers.push({el:e,l});}
+ let start=0,hit=[false,false,false],running=false;
+ const duration=6600, hold=500, fade=650, pause=700, emberLife=430;
+ function reset(){hit=[false,false,false];labels.forEach(x=>x.classList.remove('on'));cps.forEach(x=>{x.classList.remove('hit');x.style.opacity='.06'});rings.forEach(x=>x.classList.remove('hit'));[...glowSeg,...coreSeg].forEach(x=>x.style.opacity='0');embers.forEach(x=>x.el.style.opacity='0');meteor.style.opacity=halo.style.opacity='0'}
+ function flash(i){if(hit[i])return;hit[i]=true;cps[i].classList.remove('hit');rings[i].classList.remove('hit');void cps[i].getBBox();cps[i].classList.add('hit');rings[i].classList.add('hit');labels[i].classList.add('on')}
+ function drawTail(head,overall=1){
+   const from=Math.max(0,head-tailLen), actual=head-from;
+   for(let i=0;i<N;i++){
+     const a=i/N,b=(i+1)/N, l1=from+actual*a,l2=from+actual*b,p1=path.getPointAtLength(l1),p2=path.getPointAtLength(l2);
+     // q=0 at old tail, 1 at head. Nonlinear fade makes the tip truly disappear.
+     const q=(i+1)/N, alpha=Math.pow(q,2.35)*overall;
+     const gw=.6+16*Math.pow(q,2.7), cw=.45+4.2*Math.pow(q,1.85);
+     for(const [el,w,op] of [[glowSeg[i],gw,alpha*.34],[coreSeg[i],cw,alpha*.98]]){
+       el.setAttribute('x1',p1.x);el.setAttribute('y1',p1.y);el.setAttribute('x2',p2.x);el.setAttribute('y2',p2.y);
+       el.setAttribute('stroke-width',w);el.style.opacity=String(op);
+     }
+   }
+ }
+ function sparks(head,overall=1){embers.forEach(o=>{if(head<o.l){o.el.style.opacity='0';return}const d=head-o.l;if(d>emberLife){o.el.style.opacity='0';return}const q=1-d/emberLife;const visible=Math.pow(q,.9);o.el.style.opacity=String(visible*.88*overall);o.el.setAttribute('r',String(1.35+2.35*Math.pow(q,.75)))})}
+ function checkpoints(head,overall=1){cpLengths.forEach((l,i)=>{if(head>=l){flash(i);const q=Math.max(0,1-(head-l)/230);cps[i].style.opacity=String((.04+.96*q)*overall)}else cps[i].style.opacity=String(.04*overall)})}
+ function draw(head,overall=1){const p=path.getPointAtLength(head);meteor.setAttribute('cx',p.x);meteor.setAttribute('cy',p.y);halo.setAttribute('cx',p.x);halo.setAttribute('cy',p.y);meteor.style.opacity=halo.style.opacity=String(overall);drawTail(head,overall);sparks(head,overall);checkpoints(head,overall)}
+ function frame(t){
+   if(!start)start=t;const cycle=duration+hold+fade+pause;let e=t-start;
+   if(e>=cycle){start=t;reset();e=0}
+   if(e<=duration){const x=e/duration, eased=x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;draw(eased*len,1)}
+   else if(e<=duration+hold){draw(len,1)}
+   else if(e<=duration+hold+fade){const k=1-(e-duration-hold)/fade;labels.forEach(x=>x.classList.remove('on'));draw(len,k)}
+   else reset();
+   requestAnimationFrame(frame)
+ }
+ const obs=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)&&!running){running=true;reset();requestAnimationFrame(frame);obs.disconnect()}},{threshold:.2});obs.observe(route);
+})();
+
+
+// Task selector is replaced by the full panel switcher below.
+
+// Slow 12–14 second process chain; starts only when visible, then loops.
+const process=document.getElementById('process');
+const items=[...process.querySelectorAll('.item')], links=[...process.querySelectorAll('.link')];
+let processStarted=false, cycleTimer=null;
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function runProcess(){
+ while(true){
+   items.forEach(x=>x.classList.remove('active')); links.forEach(x=>x.classList.remove('run'));
+   await sleep(450);
+   for(let i=0;i<items.length;i++){
+     items[i].classList.add('active');
+     await sleep(950);
+     if(i<links.length){links[i].classList.add('run'); await sleep(950);}
+   }
+   await sleep(1800);
+ }
+}
+const processObs=new IntersectionObserver(entries=>{
+ if(entries.some(e=>e.isIntersecting)&&!processStarted){processStarted=true;runProcess();processObs.disconnect();}
+},{threshold:.32});
+processObs.observe(process);
+</script>
+
+<style id="projects-skeleton-css">
+/* Geometry-only third block. Strictly isolated from the two blocks above. */
+.projects-skeleton{
+  position:relative;
+  min-height:980px;
+  margin-top:-118px;
+  padding:190px 5.6vw 88px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#f7f7f2 0%,#f7f7f2 72%,#f4f1ea 100%);
+}
+.projects-skeleton::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:60px;
+  width:1px;
+  height:92px;
+  background:linear-gradient(180deg,rgba(92,116,126,0),rgba(92,116,126,.22),rgba(92,116,126,0));
+  pointer-events:none;
+}
+.projects-skeleton .skeleton-wrap{max-width:1560px;margin:auto;position:relative;z-index:2}
+.skeleton-stage{
+  display:grid;
+  grid-template-columns:minmax(390px,34%) minmax(0,66%);
+  gap:58px;
+  align-items:start;
+  min-height:560px;
+}
+.skeleton-copy{padding-top:18px;position:relative;z-index:3}
+.skeleton-copy h2{font-size:clamp(60px,5.1vw,91px);line-height:.86;letter-spacing:-.06em;margin:12px 0 22px}
+.skeleton-copy h2 span{font-weight:500;color:#778990}
+.skeleton-copy .lead{font-size:22px;line-height:1.18;color:#6b7e86;margin:0 0 14px}
+.skeleton-copy .desc{font-size:16px;line-height:1.45;color:#5e737c;max-width:430px;margin:0}
+.skeleton-projects{
+  position:relative;
+  margin-top:34px;
+  display:grid;
+  gap:0;
+  max-width:430px;
+  padding-left:24px;
+}
+.skeleton-projects::before{content:"";position:absolute;left:4px;top:12px;bottom:14px;width:1px;background:#bcc9ce}
+.skeleton-project{
+  position:relative;
+  display:grid;
+  grid-template-columns:48px 1fr;
+  align-items:start;
+  gap:2px;
+  min-height:54px;
+  padding:7px 0;
+  border:0;
+  background:transparent;
+  text-align:left;
+  color:#85979e;
+  cursor:pointer;
+}
+.skeleton-project::before{
+  content:"";
+  position:absolute;
+  left:-24px;
+  top:16px;
+  width:7px;height:7px;border-radius:50%;
+  background:#f7f7f2;border:1px solid #9aadb4;
+  transition:.25s ease;
+}
+.skeleton-project strong{font-size:17px;line-height:1.15}
+.skeleton-project span{font-size:10px;line-height:1.25;font-weight:800;text-transform:uppercase}
+.skeleton-project.active{color:var(--orange)}
+.skeleton-project.active::before{background:var(--orange);border-color:var(--orange);box-shadow:0 0 0 7px rgba(242,138,19,.08)}
+.skeleton-nav{display:flex;align-items:center;gap:10px;margin-top:22px}
+.skeleton-arrow{
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid #a9b8be;background:#f7f7f2;
+  color:#5f7781;font-size:23px;line-height:1;
+  cursor:pointer;position:relative;
+}
+.skeleton-arrow.next{border-color:rgba(242,138,19,.72);color:var(--orange);animation:arrowBreathe 1.8s ease-in-out infinite}
+.skeleton-arrow.next::after{
+  content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(242,138,19,.20);
+  animation:arrowHalo 1.8s ease-in-out infinite;
+}
+.skeleton-hint{margin-left:7px;display:grid;gap:3px;color:#778a92}
+.skeleton-hint b{font-size:9px;letter-spacing:.12em;color:#617983}
+.skeleton-hint span{font-size:10px}
+.projects-more{display:flex;align-items:center;gap:9px;margin:13px 0 18px;color:#83949a}
+.projects-more i{width:24px;height:2px;background:var(--orange);display:block}
+.projects-more span{font-size:8px;letter-spacing:.12em;font-weight:700}
+.skeleton-cta{border:0;background:#173541;color:#fff;padding:15px 20px;font-size:10px;font-weight:800;cursor:pointer}
+
+.visual-placeholder{
+  position:relative;
+  min-height:530px;
+  margin-top:4px;
+  overflow:hidden;
+  border-left:1px solid rgba(92,116,126,.08);
+  background:
+    linear-gradient(rgba(71,101,113,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(71,101,113,.035) 1px,transparent 1px),
+    radial-gradient(ellipse at 51% 48%,rgba(225,232,231,.34) 0 18%,rgba(247,247,242,0) 62%);
+  background-size:72px 72px,72px 72px,auto;
+}
+.visual-placeholder::before{
+  content:"";
+  position:absolute;left:0;top:0;bottom:0;width:150px;
+  background:linear-gradient(90deg,#f7f7f2 0,rgba(247,247,242,.90) 36%,rgba(247,247,242,0) 100%);
+}
+.visual-placeholder::after{
+  content:"";position:absolute;right:7%;top:13%;width:43%;height:57%;
+  border:1px solid rgba(84,111,122,.16);
+  transform:skewY(-2deg);
+}
+.placeholder-index{position:absolute;right:7%;top:7%;font-size:9px;letter-spacing:.18em;color:#87979d}
+.placeholder-axis{position:absolute;background:rgba(80,109,121,.15)}
+.axis-a{left:20%;right:8%;top:55%;height:1px}
+.axis-b{top:16%;bottom:13%;left:57%;width:1px}
+.placeholder-node{position:absolute;width:9px;height:9px;border-radius:50%;background:#f7f7f2;border:1px solid rgba(242,138,19,.65)}
+.n-a{left:34%;top:54.2%}.n-b{left:56.5%;top:31%}.n-c{right:16%;top:54.2%}
+.placeholder-copy{
+  position:absolute;left:18%;top:28%;width:min(390px,43%);
+  padding:26px 28px;background:rgba(247,247,242,.88);backdrop-filter:blur(8px);
+  border:1px solid rgba(91,116,127,.10);
+}
+.placeholder-copy span{display:block;font-size:8px;letter-spacing:.18em;font-weight:800;color:#87989f;margin-bottom:10px}
+.placeholder-copy strong{display:block;font-size:clamp(24px,2vw,36px);line-height:.96;letter-spacing:-.035em;color:#173541}
+.placeholder-copy p{font-size:12px;line-height:1.5;color:#73868e;margin:15px 0 0}
+
+.projects-skeleton .process{margin-top:58px}
+@keyframes arrowBreathe{
+  0%,100%{box-shadow:0 0 0 0 rgba(242,138,19,0),0 0 0 rgba(242,138,19,0)}
+  50%{box-shadow:0 0 0 6px rgba(242,138,19,.08),0 0 24px rgba(242,138,19,.22)}
+}
+@keyframes arrowHalo{0%,100%{opacity:.25;transform:scale(.88)}50%{opacity:.8;transform:scale(1.08)}}
+@media(max-width:1150px){
+  .projects-skeleton{padding-top:120px}
+  .skeleton-stage{grid-template-columns:1fr;gap:32px}
+  .visual-placeholder{min-height:420px;border-left:0;border-top:1px solid rgba(92,116,126,.08)}
+}
+@media(max-width:760px){
+  .projects-skeleton{margin-top:-70px;padding:130px 22px 60px}
+  .skeleton-copy h2{font-size:54px}
+  .visual-placeholder{min-height:360px}
+  .placeholder-copy{left:9%;top:26%;width:75%}
+}
+</style>
+
+
+<style id="atlas-corrections-0906">
+/* --- SECOND BLOCK: its own bottom fade, no third-block overlay --- */
+.method-art{
+  -webkit-mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 72%,
+    rgba(0,0,0,.96) 79%,
+    rgba(0,0,0,.76) 85%,
+    rgba(0,0,0,.42) 91%,
+    rgba(0,0,0,.12) 96%,
+    transparent 100%
+  ) !important;
+  mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 72%,
+    rgba(0,0,0,.96) 79%,
+    rgba(0,0,0,.76) 85%,
+    rgba(0,0,0,.42) 91%,
+    rgba(0,0,0,.12) 96%,
+    transparent 100%
+  ) !important;
+}
+
+/* The old large transition was causing washout and a false flat seam. */
+.transition{
+  left:0 !important;
+  right:0 !important;
+  bottom:0 !important;
+  height:105px !important;
+  border-radius:0 !important;
+  filter:none !important;
+  background:linear-gradient(
+    180deg,
+    rgba(247,247,242,0) 0%,
+    rgba(247,247,242,.12) 24%,
+    rgba(247,247,242,.48) 62%,
+    #f7f7f2 100%
+  ) !important;
+}
+
+/* Third block starts AFTER block two. It no longer climbs over it. */
+.projects-skeleton{
+  margin-top:0 !important;
+  padding-top:112px !important;
+}
+.projects-skeleton::before{display:none !important;}
+
+/* --- TIMELINE: IDEA = glow, not sticks --- */
+.projects-skeleton .item .icon{
+  position:relative;
+  isolation:isolate;
+}
+.projects-skeleton .item[data-step="0"] .rays{
+  display:none !important;
+}
+.projects-skeleton .item[data-step="0"] .icon::before,
+.projects-skeleton .item[data-step="0"] .icon::after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+  border-radius:50%;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  z-index:-1;
+}
+.projects-skeleton .item[data-step="0"] .icon::before{
+  width:72px;
+  height:72px;
+  border:1px solid rgba(242,138,19,.38);
+  opacity:.58;
+  box-shadow:
+    0 0 14px rgba(242,138,19,.12),
+    0 0 30px rgba(242,138,19,.08);
+  transition:opacity .35s ease,transform .35s ease,box-shadow .35s ease;
+}
+.projects-skeleton .item[data-step="0"] .icon::after{
+  width:58px;
+  height:58px;
+  background:radial-gradient(circle,rgba(242,138,19,.16) 0%,rgba(242,138,19,.07) 46%,transparent 72%);
+  filter:blur(7px);
+  opacity:.52;
+  transition:opacity .35s ease,transform .35s ease;
+}
+.projects-skeleton .item[data-step="0"].active .icon{
+  border-color:rgba(242,138,19,.68) !important;
+  box-shadow:0 0 28px rgba(242,138,19,.16) !important;
+}
+.projects-skeleton .item[data-step="0"].active .icon::before{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1.12);
+  box-shadow:
+    0 0 18px rgba(242,138,19,.20),
+    0 0 42px rgba(242,138,19,.15);
+}
+.projects-skeleton .item[data-step="0"].active .icon::after{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1.18);
+}
+
+/* --- TIMELINE: target arrow actually flies INTO bullseye --- */
+.projects-skeleton .dart{
+  opacity:0;
+  transform:translate(-18px,18px);
+  transition:transform .65s cubic-bezier(.16,.9,.3,1.15),opacity .12s;
+}
+.projects-skeleton .item.active .dart{
+  opacity:1;
+  transform:none;
+}
+
+/* Keep skeleton geometry calm while we test only structure. */
+.visual-placeholder{
+  box-shadow:none !important;
+}
+
+@media(max-width:760px){
+  .projects-skeleton{margin-top:0 !important;padding-top:84px !important;}
+}
+</style>
+
+
+<style id="projects-reset-clean-css">
+.projects-reset{
+  position:relative;
+  margin:0;
+  padding:84px 5.6vw 90px;
+  overflow:hidden;
+  background:#f7f7f2;
+}
+.projects-reset::before,
+.projects-reset::after{
+  content:none!important;
+  display:none!important;
+}
+.projects-reset-bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,#f7f7f2 0%,#f7f7f2 100%);
+  pointer-events:none;
+}
+.projects-reset-wrap{
+  position:relative;
+  z-index:2;
+  max-width:1560px;
+  margin:0 auto;
+}
+.projects-reset-stage{
+  min-height:420px;
+  position:relative;
+}
+.projects-reset-process{
+  position:relative;
+  z-index:3;
+}
+.projects-reset .process{
+  margin-top:0!important;
+}
+
+/* Preserve the approved timeline behavior only. */
+.projects-reset .item[data-step="0"] .rays{display:none!important}
+.projects-reset .item[data-step="0"] .icon{
+  position:relative!important;
+  isolation:isolate!important;
+}
+.projects-reset .item[data-step="0"] .icon::before,
+.projects-reset .item[data-step="0"] .icon::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-1;
+}
+.projects-reset .item[data-step="0"] .icon::before{
+  width:72px;
+  height:72px;
+  border:1px solid rgba(242,138,19,.36);
+  box-shadow:0 0 18px rgba(242,138,19,.14),0 0 38px rgba(242,138,19,.09);
+}
+.projects-reset .item[data-step="0"] .icon::after{
+  width:58px;
+  height:58px;
+  background:radial-gradient(circle,rgba(242,138,19,.16) 0%,rgba(242,138,19,.07) 48%,transparent 74%);
+  filter:blur(7px);
+}
+.projects-reset .item[data-step="1"] .dart{
+  opacity:0;
+  transform:translate(-18px,18px);
+  transition:transform .65s cubic-bezier(.16,.9,.3,1.15),opacity .12s;
+}
+.projects-reset .item[data-step="1"].active .dart{
+  opacity:1;
+  transform:none;
+}
+.projects-reset .item[data-step="1"] .icon svg g:first-child circle{
+  transition:fill .32s ease,stroke .32s ease,filter .32s ease;
+}
+.projects-reset .item[data-step="1"].active .icon svg g:first-child circle:nth-of-type(1){
+  fill:#fff0dc!important;
+  stroke:#f5ad55!important;
+}
+.projects-reset .item[data-step="1"].active .icon svg g:first-child circle:nth-of-type(2){
+  fill:#f6a23a!important;
+  stroke:#ed8610!important;
+}
+.projects-reset .item[data-step="1"].active .icon svg g:first-child circle:nth-of-type(3){
+  fill:#d84b32!important;
+  stroke:#b93625!important;
+  filter:drop-shadow(0 0 4px rgba(216,75,50,.45));
+}
+
+@media(max-width:760px){
+  .projects-reset{
+    padding:64px 20px 64px;
+  }
+  .projects-reset-stage{
+    min-height:300px;
+  }
+}
+</style>
+
+
+<style id="projects-bg-stage-css">
+.projects-reset{
+  position:relative;
+  margin:0;
+  padding:0 5.6vw 90px;
+  overflow:hidden;
+  background:#f7f7f2;
+}
+
+/* Smooth continuation from block 2 — no straight divider. */
+.projects-reset::before{
+  content:"";
+  position:absolute;
+  left:-5vw;
+  right:-5vw;
+  top:-90px;
+  height:220px;
+  z-index:1;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 18% 36%, rgba(247,247,242,.98) 0 22%, rgba(247,247,242,.74) 46%, transparent 72%),
+    radial-gradient(ellipse at 50% 22%, rgba(247,247,242,.94) 0 20%, rgba(247,247,242,.56) 44%, transparent 70%),
+    radial-gradient(ellipse at 84% 38%, rgba(247,247,242,.98) 0 22%, rgba(247,247,242,.72) 46%, transparent 72%);
+}
+
+/* Fresh background language for block 3: architectural, airy, subtle. */
+.projects-reset-bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 28%, rgba(232,226,215,.50) 0%, rgba(242,239,232,.28) 42%, transparent 72%),
+    linear-gradient(180deg,#f7f7f2 0%,#f5f3ed 48%,#f7f7f2 100%);
+}
+
+/* Perspective floor/grid */
+.projects-reset-bg::before{
+  content:"";
+  position:absolute;
+  left:8%;
+  right:8%;
+  top:18%;
+  bottom:18%;
+  opacity:.55;
+  background:
+    linear-gradient(rgba(72,96,106,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(72,96,106,.045) 1px, transparent 1px);
+  background-size:88px 88px;
+  transform:perspective(900px) rotateX(58deg) scaleY(1.35);
+  transform-origin:center 62%;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 58%, #000 0 52%, rgba(0,0,0,.70) 68%, transparent 88%);
+  mask-image:radial-gradient(ellipse at 50% 58%, #000 0 52%, rgba(0,0,0,.70) 68%, transparent 88%);
+}
+
+/* Architectural verticals / skyline hints */
+.projects-reset-bg::after{
+  content:"";
+  position:absolute;
+  left:18%;
+  right:14%;
+  top:13%;
+  height:52%;
+  background:
+    linear-gradient(90deg, transparent 0 7%, rgba(75,99,109,.08) 7% 7.15%, transparent 7.15% 20%, rgba(75,99,109,.06) 20% 20.1%, transparent 20.1% 36%, rgba(75,99,109,.085) 36% 36.12%, transparent 36.12% 55%, rgba(75,99,109,.06) 55% 55.12%, transparent 55.12% 73%, rgba(75,99,109,.075) 73% 73.12%, transparent 73.12% 100%);
+  -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.35) 64%, transparent 100%);
+  mask-image:linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.35) 64%, transparent 100%);
+}
+
+/* Stage: only background for now. */
+.projects-reset-stage{
+  min-height:520px;
+  position:relative;
+  z-index:2;
+}
+
+/* Subtle orange trajectory, purely environmental. */
+.projects-reset-stage::before{
+  content:"";
+  position:absolute;
+  left:14%;
+  right:13%;
+  top:46%;
+  height:1px;
+  background:linear-gradient(90deg, transparent 0%, rgba(242,138,19,.18) 18%, rgba(242,138,19,.26) 50%, rgba(242,138,19,.16) 82%, transparent 100%);
+  transform:rotate(-3deg);
+  box-shadow:
+    0 -110px 0 rgba(242,138,19,.055),
+    0 124px 0 rgba(242,138,19,.04);
+}
+
+/* Soft light wells to suggest future object positions */
+.projects-reset-stage::after{
+  content:"";
+  position:absolute;
+  inset:8% 4% 10%;
+  background:
+    radial-gradient(circle at 22% 56%, rgba(255,255,255,.72) 0 7%, rgba(255,255,255,.18) 22%, transparent 38%),
+    radial-gradient(circle at 51% 42%, rgba(255,255,255,.78) 0 8%, rgba(255,255,255,.20) 24%, transparent 40%),
+    radial-gradient(circle at 79% 58%, rgba(255,255,255,.70) 0 7%, rgba(255,255,255,.18) 22%, transparent 38%);
+  filter:blur(8px);
+}
+
+/* Timeline stays exactly where it is, on top of the scene. */
+.projects-reset-process{
+  position:relative;
+  z-index:3;
+}
+
+@media(max-width:900px){
+  .projects-reset{
+    padding-left:24px;
+    padding-right:24px;
+  }
+  .projects-reset-stage{
+    min-height:420px;
+  }
+  .projects-reset-bg::before{
+    left:-10%;
+    right:-10%;
+    background-size:64px 64px;
+  }
+}
+
+@media(max-width:600px){
+  .projects-reset{
+    padding-left:18px;
+    padding-right:18px;
+    padding-bottom:64px;
+  }
+  .projects-reset-stage{
+    min-height:330px;
+  }
+  .projects-reset-stage::before{
+    left:3%;
+    right:3%;
+    top:48%;
+  }
+}
+</style>
+
+
+<style id="independent-projects-css">
+/* Three truly independent project images on the SAME block background. */
+.independent-projects-stage{
+  min-height:650px!important;
+  position:relative!important;
+  z-index:2!important;
+  display:grid!important;
+  grid-template-columns:1fr 1fr 1fr!important;
+  gap:clamp(38px,4.5vw,82px)!important;
+  align-items:center!important;
+  padding:52px 2% 36px!important;
+}
+
+.ind-project{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  min-width:0;
+}
+.ind-avi{transform:translateY(-48px)}
+.ind-crm{transform:translateY(26px)}
+
+.ind-copy{
+  width:100%;
+  max-width:280px;
+  min-height:135px;
+  padding-left:16px;
+  border-left:1px solid rgba(242,138,19,.72);
+}
+.ind-num{
+  font-size:38px;
+  line-height:1;
+  font-weight:300;
+  color:var(--orange);
+  margin-bottom:8px;
+}
+.ind-copy h3{
+  margin:0 0 10px;
+  font-size:18px;
+  line-height:1.08;
+  letter-spacing:-.02em;
+  color:#173541;
+}
+.ind-copy p{
+  margin:0 0 11px;
+  font-size:13px;
+  line-height:1.4;
+  color:#6a7d85;
+}
+.ind-open{
+  border:0;
+  background:transparent;
+  padding:0 0 5px;
+  border-bottom:1px solid var(--orange);
+  color:#173541;
+  font-size:9px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.ind-visual{
+  width:100%;
+  max-width:430px;
+  border:0;
+  background:transparent;
+  padding:0;
+  cursor:pointer;
+  transition:transform .3s ease,filter .3s ease;
+}
+.ind-visual img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.ind-visual:hover,
+.ind-visual:focus-visible{
+  transform:translateY(-6px);
+  filter:drop-shadow(0 16px 22px rgba(54,74,80,.11));
+  outline:none;
+}
+
+.ind-bez .ind-copy{order:0}
+.ind-bez .ind-visual{order:1}
+.ind-avi .ind-visual{order:0}
+.ind-avi .ind-copy{order:1}
+.ind-crm .ind-copy{order:0}
+.ind-crm .ind-visual{order:1}
+
+
+.atlas-final__contacts{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;
+  max-width:1000px;
+  margin:12px 0 22px;
+  border-top:1px solid rgba(247,247,242,.18);
+  border-bottom:1px solid rgba(247,247,242,.18);
+}
+.atlas-contact{
+  position:relative;
+  min-height:118px;
+  padding:22px 48px 20px 0;
+  text-decoration:none;
+  color:#f7f7f2;
+  border-right:1px solid rgba(247,247,242,.14);
+  transition:background .25s ease, padding-left .25s ease;
+}
+.atlas-contact:last-child{border-right:0}
+.atlas-contact__label{
+  display:block;
+  margin-bottom:15px;
+  font-size:10px;
+  font-weight:750;
+  letter-spacing:.22em;
+  color:#f2a13a;
+}
+.atlas-contact__value{
+  display:block;
+  font-size:clamp(15px,1.15vw,19px);
+  line-height:1.35;
+  color:rgba(247,247,242,.94);
+  word-break:break-word;
+}
+.atlas-contact b{
+  position:absolute;
+  right:18px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:24px;
+  font-weight:500;
+  color:#f2a13a;
+  transition:transform .25s ease;
+}
+.atlas-contact:hover{
+  background:rgba(255,255,255,.045);
+  padding-left:15px;
+}
+.atlas-contact:hover b{
+  transform:translate(6px,-50%);
+}
+.atlas-final__microcopy{
+  margin:0 0 30px;
+  font-size:13px;
+  letter-spacing:.025em;
+  color:rgba(247,247,242,.52);
+}
+
+@media(max-width:980px){
+  .independent-projects-stage{
+    grid-template-columns:1fr!important;
+    gap:48px!important;
+    min-height:0!important;
+    padding:34px 0 40px!important;
+  }
+  .ind-project{
+    transform:none!important;
+    max-width:680px;
+    margin:0 auto;
+    width:100%;
+  }
+  .ind-copy{
+    max-width:520px;
+  }
+  .ind-visual{
+    max-width:520px;
+  }
+}
+
+@media(max-width:620px){
+  .independent-projects-stage{gap:38px!important}
+  .ind-copy{max-width:none}
+  .ind-visual{max-width:none}
+  .ind-copy h3{font-size:17px}
+  .ind-copy p{font-size:12px}
+}
+</style>
+
+
+<style id="seam-test-large-fix">
+/* Один и тот же фон у конца второго блока и тестовой сцены. */
+.projects,
+.projects-reset,
+#projects,
+.atlas-seam-test{
+  background:var(--paper) !important;
+  background-image:none !important;
+}
+
+/* Убираем любые декоративные подложки/градиенты третьего блока,
+   которые могли давать горизонтальный цветовой шов. */
+.projects::before,
+.projects::after,
+.projects-reset::before,
+.projects-reset::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* Тестовая сцена — просто продолжение той же бумаги. */
+.atlas-seam-test{
+  min-height:700px !important;
+  margin:0 !important;
+  padding:0 !important;
+  overflow:hidden !important;
+}
+
+/* Увеличиваем уже существующий прозрачный объект. */
+.atlas-seam-test__object{
+  left:13% !important;
+  top:18px !important;
+  width:min(41vw,760px) !important;
+  height:auto !important;
+  background:transparent !important;
+}
+
+/* Не меняем сам объект на мобильном — только масштабируем и сохраняем фон. */
+@media(max-width:900px){
+  .atlas-seam-test{
+    min-height:590px !important;
+  }
+  .atlas-seam-test__object{
+    left:3vw !important;
+    top:22px !important;
+    width:min(78vw,620px) !important;
+  }
+}
+</style>
+
+
+<style id="avi-transparent-placement-final">
+/* Оставляем первый объект как есть; AVI — отдельный PNG с собственной прозрачностью. */
+.atlas-seam-test__object--avi{
+  left:50% !important;
+  top:18px !important;
+  width:min(38vw,700px) !important;
+  height:auto !important;
+  transform:translateX(-50%) !important;
+  background:transparent !important;
+  object-fit:contain !important;
+}
+
+.atlas-seam-test__object:not(.atlas-seam-test__object--avi){
+  left:11% !important;
+  top:20px !important;
+  width:min(39vw,720px) !important;
+}
+
+.atlas-seam-test{
+  min-height:710px !important;
+}
+
+@media(max-width:900px){
+  .atlas-seam-test{
+    min-height:1050px !important;
+  }
+  .atlas-seam-test__object:not(.atlas-seam-test__object--avi){
+    left:50% !important;
+    top:22px !important;
+    width:min(82vw,650px) !important;
+    transform:translateX(-50%) !important;
+  }
+  .atlas-seam-test__object--avi{
+    left:50% !important;
+    top:500px !important;
+    width:min(82vw,650px) !important;
+    transform:translateX(-50%) !important;
+  }
+}
+</style>
+
+
+<style id="third-project-placement">
+.atlas-seam-test__object--third{
+  position:absolute !important;
+  left:72% !important;
+  top:30px !important;
+  width:min(34vw,640px) !important;
+  height:auto !important;
+  transform:translateX(-50%) !important;
+  object-fit:contain !important;
+  background:transparent !important;
+  z-index:3 !important;
+}
+@media(max-width:900px){
+  .atlas-seam-test{
+    min-height:1500px !important;
+  }
+  .atlas-seam-test__object--third{
+    left:50% !important;
+    top:960px !important;
+    width:min(82vw,650px) !important;
+    transform:translateX(-50%) !important;
+  }
+}
+</style>
+
+
+<style id="three-projects-correct-layout">
+.atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third){
+  left:25% !important;
+  top:20px !important;
+  width:min(31vw,590px) !important;
+  transform:translateX(-50%) !important;
+}
+.atlas-seam-test__object--avi{
+  left:50% !important;
+  top:18px !important;
+  width:min(32vw,610px) !important;
+  transform:translateX(-50%) !important;
+}
+.atlas-seam-test__object--third{
+  left:75% !important;
+  top:20px !important;
+  width:min(31vw,590px) !important;
+  transform:translateX(-50%) !important;
+}
+@media(max-width:900px){
+  .atlas-seam-test{
+    min-height:1580px !important;
+  }
+  .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third),
+  .atlas-seam-test__object--avi,
+  .atlas-seam-test__object--third{
+    left:50% !important;
+    width:min(84vw,650px) !important;
+    transform:translateX(-50%) !important;
+  }
+  .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third){top:20px !important;}
+  .atlas-seam-test__object--avi{top:510px !important;}
+  .atlas-seam-test__object--third{top:1000px !important;}
+}
+</style>
+
+
+<style id="reference-three-object-layout">
+/* Three objects: one stable grid, matching the reference rhythm.
+   Left = Bezcen, center = AVI (slightly higher), right = third project. */
+.atlas-seam-test{
+  width:min(90vw,1540px) !important;
+  min-height:650px !important;
+  margin:0 auto !important;
+  padding:28px 0 34px !important;
+  display:grid !important;
+  grid-template-columns:1fr 1.08fr 1fr !important;
+  column-gap:clamp(18px,2.8vw,54px) !important;
+  align-items:end !important;
+  overflow:visible !important;
+  position:relative !important;
+  background:var(--paper) !important;
+}
+
+/* Kill every old absolute-position rule for the three project PNGs. */
+.atlas-seam-test > .atlas-seam-test__object{
+  position:relative !important;
+  inset:auto !important;
+  left:auto !important;
+  right:auto !important;
+  top:auto !important;
+  bottom:auto !important;
+  transform:none !important;
+  width:100% !important;
+  max-width:none !important;
+  height:430px !important;
+  object-fit:contain !important;
+  object-position:center bottom !important;
+  display:block !important;
+  margin:0 !important;
+  background:transparent !important;
+}
+
+/* Reference rhythm: center project is dominant and lifted. */
+.atlas-seam-test > .atlas-seam-test__object--avi{
+  height:470px !important;
+  transform:translateY(-34px) !important;
+}
+
+/* Right object sits close to the same baseline as the left. */
+.atlas-seam-test > .atlas-seam-test__object--third{
+  height:420px !important;
+  transform:translateY(4px) !important;
+}
+
+/* Timeline remains untouched below the scene. */
+@media(max-width:1100px){
+  .atlas-seam-test{
+    width:94vw !important;
+    min-height:570px !important;
+    column-gap:16px !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object{
+    height:360px !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object--avi{
+    height:395px !important;
+    transform:translateY(-26px) !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object--third{
+    height:350px !important;
+  }
+}
+
+@media(max-width:760px){
+  .atlas-seam-test{
+    width:100% !important;
+    min-height:0 !important;
+    padding:28px 18px 44px !important;
+    grid-template-columns:1fr !important;
+    row-gap:34px !important;
+    justify-items:center !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object,
+  .atlas-seam-test > .atlas-seam-test__object--avi,
+  .atlas-seam-test > .atlas-seam-test__object--third{
+    width:min(92vw,620px) !important;
+    height:auto !important;
+    transform:none !important;
+  }
+}
+</style>
+
+
+<style id="three-projects-composition-refined">
+/* Keep the approved order and grid. Refine only scale, spacing, and vertical rhythm. */
+.atlas-seam-test{
+  width:min(94vw,1620px) !important;
+  min-height:560px !important;
+  margin:0 auto !important;
+  padding:10px 0 20px !important;
+  grid-template-columns:1.06fr 1.12fr 1fr !important;
+  column-gap:clamp(6px,1.4vw,24px) !important;
+  align-items:end !important;
+}
+
+/* Larger objects, closer together. */
+.atlas-seam-test > .atlas-seam-test__object{
+  height:520px !important;
+  object-fit:contain !important;
+  object-position:center bottom !important;
+}
+
+/* Left: slightly larger, a touch lower and left. */
+.atlas-seam-test > .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third){
+  height:535px !important;
+  transform:translate(-18px,18px) !important;
+}
+
+/* Center: dominant and elevated. */
+.atlas-seam-test > .atlas-seam-test__object--avi{
+  height:575px !important;
+  transform:translateY(-34px) !important;
+  z-index:3 !important;
+}
+
+/* Right: slightly more compact, a bit lower/right. */
+.atlas-seam-test > .atlas-seam-test__object--third{
+  height:500px !important;
+  transform:translate(16px,22px) !important;
+}
+
+/* Pull timeline a little closer to the scene. */
+.atlas-seam-test + .process,
+.atlas-seam-test ~ .process{
+  margin-top:-10px !important;
+}
+
+@media(max-width:1200px){
+  .atlas-seam-test{
+    width:96vw !important;
+    min-height:520px !important;
+    column-gap:8px !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object{
+    height:455px !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third){
+    height:470px !important;
+    transform:translate(-10px,12px) !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object--avi{
+    height:500px !important;
+    transform:translateY(-26px) !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object--third{
+    height:440px !important;
+    transform:translate(8px,16px) !important;
+  }
+}
+
+@media(max-width:760px){
+  .atlas-seam-test{
+    width:100% !important;
+    min-height:0 !important;
+    padding:24px 18px 34px !important;
+    grid-template-columns:1fr !important;
+    row-gap:26px !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object,
+  .atlas-seam-test > .atlas-seam-test__object--avi,
+  .atlas-seam-test > .atlas-seam-test__object--third,
+  .atlas-seam-test > .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third){
+    width:min(94vw,650px) !important;
+    height:auto !important;
+    transform:none !important;
+  }
+}
+</style>
+
+
+<style id="three-projects-composition-larger">
+/* Same approved composition — only a moderate scale increase. */
+.atlas-seam-test{
+  width:min(96vw,1680px) !important;
+  column-gap:clamp(2px,.8vw,14px) !important;
+}
+
+.atlas-seam-test > .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third){
+  height:590px !important;
+  transform:translate(-12px,18px) !important;
+}
+
+.atlas-seam-test > .atlas-seam-test__object--avi{
+  height:635px !important;
+  transform:translateY(-36px) !important;
+}
+
+.atlas-seam-test > .atlas-seam-test__object--third{
+  height:555px !important;
+  transform:translate(12px,22px) !important;
+}
+
+@media(max-width:1200px){
+  .atlas-seam-test > .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third){
+    height:515px !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object--avi{
+    height:550px !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object--third{
+    height:485px !important;
+  }
+}
+
+@media(max-width:760px){
+  .atlas-seam-test > .atlas-seam-test__object,
+  .atlas-seam-test > .atlas-seam-test__object--avi,
+  .atlas-seam-test > .atlas-seam-test__object--third,
+  .atlas-seam-test > .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third){
+    width:min(94vw,650px) !important;
+    height:auto !important;
+    transform:none !important;
+  }
+}
+</style>
+
+
+<style id="three-projects-plus20-actual">
+/* The previous version changed height, but the images were width-limited by their grid cells.
+   This version scales the rendered objects themselves by 20%. */
+.atlas-seam-test{
+  width:min(98vw,1780px) !important;
+  grid-template-columns:1fr 1.08fr 1fr !important;
+  column-gap:clamp(40px,3vw,64px) !important;
+  overflow:visible !important;
+}
+
+/* Base sizing kept from the approved composition. */
+.atlas-seam-test > .atlas-seam-test__object{
+  width:100% !important;
+  max-width:none !important;
+  object-fit:contain !important;
+  object-position:center bottom !important;
+  transform-origin:center bottom !important;
+}
+
+/* TRUE +20% visual scale */
+.atlas-seam-test > .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third){
+  transform:translate(-14px,16px) scale(1.20) !important;
+  z-index:2 !important;
+}
+.atlas-seam-test > .atlas-seam-test__object--avi{
+  transform:translateY(-36px) scale(1.20) !important;
+  z-index:3 !important;
+}
+.atlas-seam-test > .atlas-seam-test__object--third{
+  transform:translate(14px,20px) scale(1.20) !important;
+  z-index:2 !important;
+}
+
+/* Extra room so enlarged objects do not touch each other or timeline */
+.atlas-seam-test{
+  min-height:720px !important;
+  padding:20px 0 48px !important;
+}
+
+@media(max-width:1400px){
+  .atlas-seam-test{
+    column-gap:34px !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third){
+    transform:translate(-8px,14px) scale(1.16) !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object--avi{
+    transform:translateY(-30px) scale(1.16) !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object--third{
+    transform:translate(8px,18px) scale(1.16) !important;
+  }
+}
+
+@media(max-width:1100px){
+  .atlas-seam-test{
+    column-gap:24px !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third),
+  .atlas-seam-test > .atlas-seam-test__object--avi,
+  .atlas-seam-test > .atlas-seam-test__object--third{
+    transform:scale(1.10) !important;
+  }
+}
+
+@media(max-width:760px){
+  .atlas-seam-test{
+    grid-template-columns:1fr !important;
+    row-gap:36px !important;
+    min-height:0 !important;
+    padding:28px 18px 40px !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object,
+  .atlas-seam-test > .atlas-seam-test__object--avi,
+  .atlas-seam-test > .atlas-seam-test__object--third{
+    width:min(92vw,680px) !important;
+    height:auto !important;
+    transform:none !important;
+  }
+}
+</style>
+
+
+<style id="three-projects-spread">
+/* Keep approved +20% scale, only spread the three objects horizontally. */
+.atlas-seam-test{
+  width:min(99vw,1900px) !important;
+  grid-template-columns:1fr 1.08fr 1fr !important;
+  column-gap:clamp(78px,5.2vw,112px) !important;
+}
+
+/* left — farther left */
+.atlas-seam-test > .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third){
+  transform:translate(-58px,16px) scale(1.20) !important;
+}
+
+/* center stays centered */
+.atlas-seam-test > .atlas-seam-test__object--avi{
+  transform:translateY(-36px) scale(1.20) !important;
+}
+
+/* right — farther right */
+.atlas-seam-test > .atlas-seam-test__object--third{
+  transform:translate(58px,20px) scale(1.20) !important;
+}
+
+@media(max-width:1400px){
+  .atlas-seam-test{column-gap:58px !important;}
+  .atlas-seam-test > .atlas-seam-test__object:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third){
+    transform:translate(-34px,14px) scale(1.16) !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object--avi{
+    transform:translateY(-30px) scale(1.16) !important;
+  }
+  .atlas-seam-test > .atlas-seam-test__object--third{
+    transform:translate(34px,18px) scale(1.16) !important;
+  }
+}
+</style>
+
+
+<div class="project-modal" id="projectModal" aria-hidden="true">
+  <div class="project-modal__backdrop" data-modal-close></div>
+  <section class="project-modal__card" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+    <button class="project-modal__close" type="button" data-modal-close aria-label="Закрыть">×</button>
+    <div class="project-modal__num" id="projectModalNum"></div>
+    <div class="project-modal__eyebrow">ПРОЕКТ ALEX ATLAS</div>
+    <h3 id="projectModalTitle"></h3>
+    <p class="project-modal__lead" id="projectModalLead"></p>
+    <div class="project-modal__grid">
+      <div>
+        <span>ЗАДАЧА</span>
+        <p id="projectModalTask"></p>
+      </div>
+      <div>
+        <span>ЧТО Я СДЕЛАЛ</span>
+        <p id="projectModalDone"></p>
+      </div>
+      <div>
+        <span>РЕЗУЛЬТАТ</span>
+        <p id="projectModalResult"></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<style id="projects-interactive-modal-css">
+/* Header copy for project scene */
+.atlas-seam-test{
+  position:relative !important;
+}
+.projects-copy{
+  position:absolute;
+  left:2.4%;
+  top:34px;
+  z-index:8;
+  width:min(330px,24vw);
+  color:#173541;
+  pointer-events:none;
+}
+.projects-copy__kicker{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.22em;
+  color:#55717d;
+  margin-bottom:10px;
+}
+.projects-copy h2{
+  margin:0;
+  font-size:clamp(42px,4.1vw,74px);
+  line-height:.86;
+  letter-spacing:-.055em;
+  font-weight:800;
+}
+.projects-copy h2 span{
+  font-weight:300;
+  color:#83959c;
+}
+.projects-copy p{
+  margin:18px 0 16px;
+  font-size:13px;
+  line-height:1.5;
+  color:#617780;
+}
+.projects-copy__note{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.13em;
+  color:#809198;
+}
+.projects-copy__note i{
+  display:block;
+  width:25px;
+  height:2px;
+  background:#f28a13;
+}
+
+/* Images behave like physical buttons, not outlined UI controls. */
+.project-hit{
+  cursor:pointer !important;
+  user-select:none;
+  -webkit-user-drag:none;
+  transition:
+    transform .12s cubic-bezier(.2,.8,.2,1),
+    filter .12s ease !important;
+  will-change:transform,filter;
+  outline:none !important;
+}
+.project-hit:hover{
+  filter:
+    brightness(1.02)
+    drop-shadow(0 18px 18px rgba(33,49,54,.11)) !important;
+}
+.project-hit:active,
+.project-hit.is-pressed{
+  filter:
+    brightness(.97)
+    drop-shadow(0 4px 4px rgba(33,49,54,.10)) !important;
+}
+
+/* Preserve each object's approved position, adding only the "press" depth. */
+.atlas-seam-test > .project-hit:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third):active,
+.atlas-seam-test > .project-hit:not(.atlas-seam-test__object--avi):not(.atlas-seam-test__object--third).is-pressed{
+  transform:translate(-58px,24px) scale(1.185,.97) !important;
+}
+.atlas-seam-test > .project-hit.atlas-seam-test__object--avi:active,
+.atlas-seam-test > .project-hit.atlas-seam-test__object--avi.is-pressed{
+  transform:translateY(-27px) scale(1.185,.97) !important;
+}
+.atlas-seam-test > .project-hit.atlas-seam-test__object--third:active,
+.atlas-seam-test > .project-hit.atlas-seam-test__object--third.is-pressed{
+  transform:translate(58px,29px) scale(1.185,.97) !important;
+}
+
+/* Keyboard focus: neutral, no orange ring. */
+.project-hit:focus-visible{
+  filter:
+    brightness(1.02)
+    drop-shadow(0 0 0 rgba(0,0,0,0))
+    drop-shadow(0 12px 20px rgba(23,53,65,.14)) !important;
+}
+
+/* Modal */
+body.project-modal-open{
+  overflow:hidden;
+}
+.project-modal{
+  position:fixed;
+  inset:0;
+  z-index:500;
+  display:grid;
+  place-items:center;
+  visibility:hidden;
+  opacity:0;
+  transition:opacity .22s ease,visibility .22s ease;
+}
+.project-modal.is-open{
+  visibility:visible;
+  opacity:1;
+}
+.project-modal__backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(19,40,48,.36);
+  backdrop-filter:blur(12px);
+}
+.project-modal__card{
+  position:relative;
+  width:min(900px,88vw);
+  max-height:82vh;
+  overflow:auto;
+  padding:44px 48px 40px;
+  background:rgba(248,248,244,.985);
+  border:1px solid rgba(255,255,255,.76);
+  box-shadow:0 36px 90px rgba(17,39,49,.24);
+  transform:translateY(14px) scale(.985);
+  transition:transform .24s cubic-bezier(.2,.8,.2,1);
+}
+.project-modal.is-open .project-modal__card{
+  transform:none;
+}
+.project-modal__card::before{
+  content:"";
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width:3px;
+  background:#f28a13;
+}
+.project-modal__close{
+  position:absolute;
+  right:20px;
+  top:18px;
+  width:40px;
+  height:40px;
+  border:1px solid #a9b7bc;
+  background:transparent;
+  color:#48616b;
+  font-size:25px;
+  line-height:1;
+  cursor:pointer;
+}
+.project-modal__num{
+  font-size:10px;
+  letter-spacing:.18em;
+  color:#809198;
+}
+.project-modal__eyebrow{
+  margin-top:24px;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.18em;
+  color:#66808a;
+}
+.project-modal h3{
+  margin:10px 0 18px;
+  font-size:clamp(38px,4.3vw,68px);
+  line-height:.92;
+  letter-spacing:-.055em;
+  color:#173541;
+}
+.project-modal__lead{
+  max-width:730px;
+  margin:0 0 34px;
+  font-size:19px;
+  line-height:1.42;
+  color:#627780;
+}
+.project-modal__grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+  padding-top:24px;
+  border-top:1px solid rgba(78,104,114,.18);
+}
+.project-modal__grid span{
+  display:block;
+  margin-bottom:9px;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.16em;
+  color:#f28a13;
+}
+.project-modal__grid p{
+  margin:0;
+  font-size:14px;
+  line-height:1.55;
+  color:#4f6771;
+}
+
+/* Keep the copy readable as viewport gets narrower. */
+@media(max-width:1250px){
+  .projects-copy{
+    top:22px;
+    left:2%;
+    width:250px;
+  }
+  .projects-copy h2{
+    font-size:48px;
+  }
+  .projects-copy p{
+    font-size:11px;
+  }
+}
+@media(max-width:900px){
+  .projects-copy{
+    position:relative;
+    left:auto;
+    top:auto;
+    width:100%;
+    margin:0 0 24px;
+    padding:0 10px;
+  }
+  .projects-copy h2{
+    font-size:54px;
+  }
+}
+@media(max-width:760px){
+  .project-modal__card{
+    width:92vw;
+    padding:38px 24px 28px;
+  }
+  .project-modal__grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .projects-copy h2{
+    font-size:46px;
+  }
+}
+</style>
+
+
+<script id="projects-interactive-modal-js">
+(() => {
+  const data = {
+    bezcen: {
+      num: '01 / 03',
+      title: 'БЕСЦЕННАЯ СТОМАТОЛОГИЯ',
+      lead: 'Из необычной идеи — в цельный продукт с понятной логикой, визуальным языком и собственным характером.',
+      task: 'Сделать понятной модель стоматологии без фиксированного прайса и превратить её из идеи в убедительный продукт.',
+      done: 'Собрал позиционирование и концепцию, разработал сайт и коммуникацию, продумал визуальный стиль, маркетинговые материалы и рабочую логику проекта.',
+      result: 'Появился узнаваемый образ проекта и понятная система, в которой идея, сервис и визуальная подача работают вместе.'
+    },
+    avi: {
+      num: '02 / 03',
+      title: 'AVI КЛИНИКА',
+      lead: 'Персональная упаковка врача и его сложных стоматологических услуг в понятный и уверенный продукт.',
+      task: 'Показать опыт и компетенции врача без перегруженного медицинского языка и сделать предложение понятным пациенту.',
+      done: 'Пересобрал структуру услуг, тексты и позиционирование, разработал персональный сайт и логику подачи информации.',
+      result: 'Вместо набора процедур появился цельный образ специалиста, которому проще доверять и с которым проще начать диалог.'
+    },
+    crm: {
+      num: '03 / 03',
+      title: 'CRM ДЛЯ КЛИНИКИ',
+      lead: 'Рабочая система для записи, пациентов и ежедневных процессов — без лишней сложности.',
+      task: 'Собрать удобную среду для администратора и врача и сократить количество ручных действий в ежедневной работе.',
+      done: 'Спроектировал расписание, карточку пациента, роли доступа, статусы, заметки, подтверждения и ключевые рабочие сценарии.',
+      result: 'Получилась понятная CRM, построенная вокруг реальной работы клиники: от записи пациента до повторного визита.'
+    }
+  };
+
+  const modal = document.getElementById('projectModal');
+  if (!modal) return;
+
+  const fields = {
+    num: document.getElementById('projectModalNum'),
+    title: document.getElementById('projectModalTitle'),
+    lead: document.getElementById('projectModalLead'),
+    task: document.getElementById('projectModalTask'),
+    done: document.getElementById('projectModalDone'),
+    result: document.getElementById('projectModalResult')
+  };
+
+  function openModal(key){
+    const d = data[key];
+    if (!d) return;
+    Object.keys(fields).forEach(k => fields[k].textContent = d[k]);
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('project-modal-open');
+  }
+
+  function closeModal(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('project-modal-open');
+  }
+
+  document.querySelectorAll('.project-hit').forEach(el => {
+    const key = el.dataset.project;
+
+    el.addEventListener('pointerdown', () => el.classList.add('is-pressed'));
+    ['pointerup','pointercancel','pointerleave'].forEach(evt =>
+      el.addEventListener(evt, () => el.classList.remove('is-pressed'))
+    );
+
+    el.addEventListener('click', () => {
+      el.classList.remove('is-pressed');
+      setTimeout(() => openModal(key), 70);
+    });
+
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        el.classList.add('is-pressed');
+        setTimeout(() => {
+          el.classList.remove('is-pressed');
+          openModal(key);
+        }, 110);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-modal-close]').forEach(el =>
+    el.addEventListener('click', closeModal)
+  );
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+})();
+</script>
+
+
+<style id="approach-text-overlap-fix">
+/* Исправляем только наложения текста. Объекты и дорогу не двигаем. */
+
+/* 03: уводим подпись левее и ниже, чтобы она не пересекалась с финальным тезисом. */
+.s3 .step-copy{
+  left:18px !important;
+  top:275px !important;
+  width:215px !important;
+}
+
+/* 05: уводим подпись вниз и чуть правее от ракеты, отдельно от блока 06. */
+.s5 .step-copy{
+  left:248px !important;
+  top:215px !important;
+  width:190px !important;
+}
+
+/* Финальный тезис немного правее и ниже — отдельная смысловая зона. */
+.approach-final{
+  left:49.5% !important;
+  bottom:34px !important;
+  width:620px !important;
+}
+
+/* Чуть уменьшаем риск пересечения на средних экранах. */
+@media(max-width:1450px){
+  .s3 .step-copy{
+    left:10px !important;
+    top:270px !important;
+    width:205px !important;
+  }
+  .s5 .step-copy{
+    left:235px !important;
+    top:215px !important;
+    width:180px !important;
+  }
+  .approach-final{
+    left:50.5% !important;
+    width:560px !important;
+  }
+}
+</style>
+
+
+
+
+
+
+<style id="approach-03-04-no-overlap-v3">
+.s3{
+  left:30.0% !important;
+  top:525px !important;
+}
+.s3 > img{
+  transform:none !important;
+}
+.s4{
+  left:46.5% !important;
+  top:145px !important;
+}
+</style>
+
+
+<style id="approach-object-03-isolation-v4">
+/* Разводим именно изображение 03 от 02 и 04, не трогая его текст. */
+.s3 > img{
+  transform: translate(22px, 58px) !important;
+}
+</style>
+
+
+<style id="approach-step05-text-fix-v5">
+.s5 .step-copy{
+  left:330px !important;
+  top:285px !important;
+  width:205px !important;
+  z-index:20 !important;
+}
+</style>
+
+
+<style id="approach-animated-flow-css">
+/* ===== ALEX ATLAS · animated approach flow ===== */
+
+/* Старую дорогу полностью убираем. */
+.approach-road{
+  display:none !important;
+}
+
+/* Заголовки этапов остаются всегда.
+   Описание появляется только у активного этапа. */
+.approach-section .step-copy p{
+  opacity:0;
+  transform:translateY(7px);
+  max-height:0;
+  overflow:hidden;
+  margin-top:0 !important;
+  pointer-events:none;
+  transition:
+    opacity .28s ease,
+    transform .28s ease,
+    max-height .34s ease,
+    margin-top .28s ease;
+}
+.approach-section .step.is-active .step-copy p,
+.approach-section .step.is-complete .step-copy p{
+  opacity:1;
+  transform:translateY(0);
+  max-height:130px;
+  margin-top:7px !important;
+}
+
+/* Номер и заголовок активного этапа немного усиливаются. */
+.approach-section .step-copy b,
+.approach-section .step-copy h3{
+  transition:filter .28s ease, transform .28s ease, opacity .28s ease;
+}
+.approach-section .step.is-active .step-copy b,
+.approach-section .step.is-active .step-copy h3{
+  filter:brightness(1.08);
+}
+
+/* Лёгкая "жизнь" активного объекта без изменения утверждённых координат. */
+.approach-section .step > img{
+  transform-origin:center bottom;
+  transition:
+    filter .42s ease,
+    scale .42s cubic-bezier(.2,.8,.2,1),
+    translate .42s cubic-bezier(.2,.8,.2,1);
+}
+.approach-section .step.is-active > img{
+  filter:
+    brightness(1.12)
+    saturate(1.05)
+    drop-shadow(0 14px 20px rgba(242,138,19,.18)) !important;
+  scale:1.055;
+  translate:0 -5px;
+}
+
+/* Едва заметный импульс внутри активного объекта. */
+@keyframes atlasObjectPulse{
+  0%,100%{filter:brightness(1.10) saturate(1.04) drop-shadow(0 14px 20px rgba(242,138,19,.16))}
+  50%{filter:brightness(1.18) saturate(1.08) drop-shadow(0 16px 26px rgba(242,138,19,.24))}
+}
+.approach-section .step.is-active > img{
+  animation:atlasObjectPulse 1.7s ease-in-out infinite;
+}
+
+/* Жирная "физическая" стрелка, которая ползёт между объектами. */
+.approach-flow-arrow{
+  position:absolute;
+  left:0;
+  top:0;
+  width:96px;
+  height:24px;
+  z-index:3;
+  pointer-events:none;
+  opacity:0;
+  transform-origin:18px 12px;
+  transition:
+    transform 1.35s cubic-bezier(.42,0,.2,1),
+    opacity .22s ease;
+  filter:drop-shadow(0 6px 8px rgba(242,138,19,.20));
+}
+.approach-flow-arrow__shaft{
+  position:absolute;
+  left:0;
+  top:7px;
+  width:68px;
+  height:10px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#ffc66e 0%,#f28a13 55%,#ff9e1d 100%);
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.75),
+    0 0 14px rgba(242,138,19,.28);
+}
+.approach-flow-arrow__head{
+  position:absolute;
+  right:0;
+  top:0;
+  width:0;
+  height:0;
+  border-top:12px solid transparent;
+  border-bottom:12px solid transparent;
+  border-left:28px solid #f28a13;
+  filter:drop-shadow(0 0 5px rgba(242,138,19,.16));
+}
+.approach-flow-arrow.is-visible{opacity:1}
+.approach-flow-arrow.is-resetting{transition:none !important}
+
+/* Пользователь может выбрать этап сам. */
+.approach-section .step{
+  cursor:pointer;
+}
+.approach-section .step:focus-visible{
+  outline:2px solid rgba(23,53,65,.28);
+  outline-offset:8px;
+}
+
+/* На тач-экранах активный текст остаётся читаемым. */
+@media(max-width:1100px){
+  .approach-flow-arrow{display:none !important}
+  .approach-section .step-copy p{
+    max-height:none;
+  }
+}
+
+/* Уважение системной настройки "уменьшить движение". */
+@media(prefers-reduced-motion:reduce){
+  .approach-flow-arrow{display:none !important}
+  .approach-section .step > img{animation:none !important;transition:none !important}
+  .approach-section .step-copy p{transition:none !important}
+}
+</style>
+
+
+
+
+
+<style id="approach-particle-route-css">
+/* ===== Particle route instead of the cheap arrow ===== */
+.approach-flow-arrow{display:none !important}
+
+.approach-particle-route{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  z-index:2;
+  pointer-events:none;
+}
+
+.approach-particle-route .route-base,
+.approach-particle-route .route-done,
+.approach-particle-route .route-live{
+  fill:none;
+  stroke-linecap:round;
+  vector-effect:non-scaling-stroke;
+}
+
+.approach-particle-route .route-base{
+  stroke:#c7bda9;
+  stroke-width:2.2;
+  stroke-dasharray:1 13;
+  opacity:.58;
+}
+
+.approach-particle-route .route-done{
+  stroke:#f2a43a;
+  stroke-width:2.7;
+  stroke-dasharray:1 11;
+  opacity:0;
+  transition:opacity .4s ease;
+  filter:drop-shadow(0 0 3px rgba(242,138,19,.24));
+}
+.approach-particle-route .route-done.is-done{
+  opacity:.88;
+  animation:atlasRouteShimmer 2.6s linear infinite;
+}
+
+.approach-particle-route .route-live{
+  stroke:#ffc36d;
+  stroke-width:3.2;
+  stroke-dasharray:1 10;
+  opacity:0;
+  filter:drop-shadow(0 0 5px rgba(242,138,19,.34));
+}
+.approach-particle-route .route-live.is-live{
+  opacity:1;
+  animation:atlasRouteShimmer 1.15s linear infinite;
+}
+
+@keyframes atlasRouteShimmer{
+  to{stroke-dashoffset:-44}
+}
+
+#approachPulse{
+  opacity:0;
+  transition:opacity .18s ease;
+}
+#approachPulse.is-visible{opacity:1}
+#approachPulse .pulse-core{
+  fill:#fff6d8;
+  stroke:#f28a13;
+  stroke-width:2;
+}
+#approachPulse .pulse-tail{
+  fill:#f28a13;
+}
+#approachPulse .p1{opacity:.82}
+#approachPulse .p2{opacity:.58}
+#approachPulse .p3{opacity:.38}
+#approachPulse .p4{opacity:.20}
+
+/* The active-object behavior from the previous version stays, but a touch more premium. */
+.approach-section .step.is-active > img{
+  scale:1.045;
+  translate:0 -4px;
+  filter:
+    brightness(1.13)
+    saturate(1.04)
+    drop-shadow(0 16px 24px rgba(242,138,19,.18)) !important;
+}
+
+/* Completed steps keep a tiny residual glow while the route is building. */
+.approach-section .step.is-complete > img{
+  filter:
+    brightness(1.035)
+    saturate(1.015)
+    drop-shadow(0 8px 14px rgba(242,138,19,.08)) !important;
+}
+
+@media(max-width:1100px){
+  .approach-particle-route{display:none !important}
+}
+@media(prefers-reduced-motion:reduce){
+  .approach-particle-route .route-done,
+  .approach-particle-route .route-live{
+    animation:none !important;
+  }
+  #approachPulse{display:none !important}
+}
+</style>
+
+
+<script id="approach-particle-route-js">
+(() => {
+  const section = document.querySelector('.approach-section');
+  if (!section || section.dataset.particleFlowInit === '1') return;
+  section.dataset.particleFlowInit = '1';
+
+  const canvas = section.querySelector('.approach-canvas');
+  const steps = Array.from(section.querySelectorAll('.step'));
+  const svg = section.querySelector('#approachParticleRoute');
+  const segGroup = section.querySelector('#approachRouteSegments');
+  const pulse = section.querySelector('#approachPulse');
+  if (!canvas || !svg || !segGroup || !pulse || steps.length !== 6) return;
+
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let segments = [];
+  let activeIndex = 0;
+  let timer = null;
+  let raf = null;
+  let userPauseTimer = null;
+  let pausedByUser = false;
+
+  function pointFor(step, side){
+    const img = step.querySelector('img');
+    const cr = canvas.getBoundingClientRect();
+    const r = (img || step).getBoundingClientRect();
+
+    // Anchor near the lower side edge, so the route appears to pass around/behind podiums.
+    return {
+      x: (side === 'right' ? r.right - 18 : r.left + 18) - cr.left,
+      y: r.bottom - cr.top - Math.min(36, r.height * .09)
+    };
+  }
+
+  function makePath(a,b,index){
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
+    const bend = Math.max(90, Math.abs(dx) * .34);
+    const direction = dx >= 0 ? 1 : -1;
+
+    // Alternating curvature keeps the route organic, not like uniform S-waves.
+    const lift = (index % 2 === 0 ? -1 : 1) * Math.min(70, 26 + Math.abs(dy)*.18);
+
+    const c1 = { x:a.x + bend*direction, y:a.y + lift };
+    const c2 = { x:b.x - bend*direction, y:b.y - lift*.45 };
+
+    return `M ${a.x.toFixed(1)} ${a.y.toFixed(1)}
+            C ${c1.x.toFixed(1)} ${c1.y.toFixed(1)},
+              ${c2.x.toFixed(1)} ${c2.y.toFixed(1)},
+              ${b.x.toFixed(1)} ${b.y.toFixed(1)}`;
+  }
+
+  function rebuildRoute(){
+    segGroup.innerHTML = '';
+    segments = [];
+    const vbW = canvas.clientWidth;
+    const vbH = canvas.clientHeight;
+    svg.setAttribute('viewBox', `0 0 ${vbW} ${vbH}`);
+
+    for (let i=0;i<steps.length-1;i++){
+      const a = pointFor(steps[i], 'right');
+      const b = pointFor(steps[i+1], 'left');
+      const d = makePath(a,b,i);
+
+      const base = document.createElementNS('http://www.w3.org/2000/svg','path');
+      base.setAttribute('d',d);
+      base.setAttribute('class','route-base');
+
+      const done = document.createElementNS('http://www.w3.org/2000/svg','path');
+      done.setAttribute('d',d);
+      done.setAttribute('class','route-done');
+
+      const live = document.createElementNS('http://www.w3.org/2000/svg','path');
+      live.setAttribute('d',d);
+      live.setAttribute('class','route-live');
+
+      segGroup.append(base,done,live);
+      segments.push({base,done,live});
+    }
+
+    applyCompletedState(activeIndex);
+  }
+
+  function setActive(index){
+    activeIndex = Math.max(0, Math.min(steps.length-1,index));
+    steps.forEach((s,i) => {
+      s.classList.toggle('is-active', i===activeIndex);
+      s.classList.toggle('is-complete', i<activeIndex);
+    });
+    applyCompletedState(activeIndex);
+  }
+
+  function applyCompletedState(index){
+    segments.forEach((seg,i) => {
+      seg.done.classList.toggle('is-done', i < index);
+      seg.live.classList.remove('is-live');
+    });
+  }
+
+  function setPulseOnPath(path,t){
+    const len = path.getTotalLength();
+    const p = path.getPointAtLength(len*t);
+    pulse.setAttribute('transform',`translate(${p.x} ${p.y})`);
+
+    // Tail follows the same path, progressively farther behind.
+    const tails = Array.from(pulse.querySelectorAll('.pulse-tail'));
+    const offsets = [.035,.07,.105,.14];
+    tails.forEach((c,i) => {
+      const tt = Math.max(0,t-offsets[i]);
+      const q = path.getPointAtLength(len*tt);
+      c.setAttribute('cx', q.x-p.x);
+      c.setAttribute('cy', q.y-p.y);
+    });
+  }
+
+  function animateSegment(index,onDone){
+    const seg = segments[index];
+    if (!seg) return;
+    const duration = 1500;
+    const start = performance.now();
+
+    segments.forEach((s,i) => s.live.classList.toggle('is-live', i===index));
+    pulse.classList.add('is-visible');
+
+    function frame(now){
+      const p = Math.min(1,(now-start)/duration);
+      const eased = 1 - Math.pow(1-p,3);
+      setPulseOnPath(seg.live,eased);
+
+      if (p < 1){
+        raf = requestAnimationFrame(frame);
+      }else{
+        seg.live.classList.remove('is-live');
+        pulse.classList.remove('is-visible');
+        seg.done.classList.add('is-done');
+        setActive(index+1);
+        if (typeof onDone === 'function') onDone();
+      }
+    }
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(frame);
+  }
+
+  function scheduleNext(delay=1150){
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      if (pausedByUser || reduced) return;
+
+      if (activeIndex >= steps.length-1){
+        // Hold the full completed route, then fade/reset from the beginning.
+        setTimeout(() => {
+          steps.forEach(s => s.classList.remove('is-active','is-complete'));
+          segments.forEach(s => s.done.classList.remove('is-done'));
+          setActive(0);
+          scheduleNext(1300);
+        }, 1250);
+        return;
+      }
+
+      animateSegment(activeIndex,() => scheduleNext(1050));
+    },delay);
+  }
+
+  function userActivate(index){
+    pausedByUser = true;
+    clearTimeout(timer);
+    cancelAnimationFrame(raf);
+    pulse.classList.remove('is-visible');
+    segments.forEach(s => s.live.classList.remove('is-live'));
+    setActive(index);
+
+    clearTimeout(userPauseTimer);
+    userPauseTimer = setTimeout(() => {
+      pausedByUser = false;
+      scheduleNext(2200);
+    },4200);
+  }
+
+  steps.forEach((step,index) => {
+    step.addEventListener('click',() => userActivate(index));
+    step.addEventListener('keydown',e => {
+      if (e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        userActivate(index);
+      }
+    });
+  });
+
+  // Keep only headings visible initially; first description becomes active.
+  setActive(0);
+
+  // Build after layout settles so anchors match the actual PNG positions.
+  requestAnimationFrame(() => {
+    rebuildRoute();
+  });
+
+
+  let flowStarted = false;
+
+  function startFlowOnceVisible(){
+    if (reduced || flowStarted) return;
+    flowStarted = true;
+
+    // Гарантированно начинаем с 01, независимо от времени загрузки страницы.
+    clearTimeout(timer);
+    cancelAnimationFrame(raf);
+    pulse.classList.remove('is-visible');
+    segments.forEach(s => {
+      s.live.classList.remove('is-live');
+      s.done.classList.remove('is-done');
+    });
+    steps.forEach(s => s.classList.remove('is-active','is-complete'));
+    setActive(0);
+
+    // Небольшая пауза после появления объекта — пользователь успевает
+    // понять, что начинается последовательность.
+    scheduleNext(900);
+  }
+
+  if ('IntersectionObserver' in window){
+    const firstObject = steps[0].querySelector('img') || steps[0];
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry && entry.isIntersecting && entry.intersectionRatio >= 0.80){
+        startFlowOnceVisible();
+        visibilityObserver.disconnect();
+      }
+    }, {
+      threshold:[0,0.5,0.8,0.9,1]
+    });
+    visibilityObserver.observe(firstObject);
+  } else {
+    // Fallback для старых браузеров: проверяем долю видимости первого объекта.
+    const firstObject = steps[0].querySelector('img') || steps[0];
+    const checkVisibility = () => {
+      if (flowStarted) return;
+      const r = firstObject.getBoundingClientRect();
+      const visible = Math.max(0, Math.min(r.bottom, window.innerHeight) - Math.max(r.top,0));
+      const ratio = r.height ? visible / r.height : 0;
+      if (ratio >= 0.80){
+        startFlowOnceVisible();
+        window.removeEventListener('scroll',checkVisibility);
+      }
+    };
+    window.addEventListener('scroll',checkVisibility,{passive:true});
+    checkVisibility();
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize',() => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      cancelAnimationFrame(raf);
+      pulse.classList.remove('is-visible');
+      rebuildRoute();
+    },160);
+  },{passive:true});
+})();
+</script>
+
+
+<!-- ===== 04 · ABOUT / FINAL ===== -->
+<section class="atlas-about" id="about">
+  <div class="atlas-about__grid" aria-hidden="true"></div>
+  <div class="atlas-about__eyebrow">04 · ОБО МНЕ</div>
+
+  <div class="atlas-about__layout">
+    <div class="atlas-about__visual">
+      <div class="atlas-about__image-shell">
+        <img src="assets/atlas-img-12.webp" alt="ALEX ATLAS — от проекта к реализованному результату">
+        <div class="atlas-about__scan" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="atlas-about__copy">
+      <h2><span class="line">Я НЕ ПРИШЁЛ В ЭТО</span><span class="line">ИЗ ДИЗАЙНА</span></h2>
+      <div class="atlas-about__accent">Я ПРИШЁЛ ИЗ РЕАЛЬНЫХ ЗАДАЧ</div>
+
+      <div class="atlas-about__story">
+        <p><strong>Строительство</strong> научило меня видеть систему.</p>
+        <p><strong>Продажи</strong> — понимать людей.</p>
+        <p><strong>Медицина и собственные проекты</strong> — отвечать за результат целиком.</p>
+        <p><strong>Технологии и AI</strong> дали инструменты собирать всё это быстрее и масштабнее.</p>
+      </div>
+
+      <div class="atlas-about__divider"></div>
+
+      <p class="atlas-about__lead">Поэтому я не смотрю на задачу как дизайнер, маркетолог или разработчик.</p>
+      <h3>Я СМОТРЮ НА НЕЁ КАК НА СИСТЕМУ,<br>КОТОРАЯ ДОЛЖНА РАБОТАТЬ ЦЕЛИКОМ.</h3>
+    </div>
+  </div>
+</section>
+
+<section class="atlas-final" id="contact">
+  <div class="atlas-final__orb" aria-hidden="true"></div>
+  <div class="atlas-final__content">
+    <div class="atlas-final__eyebrow">05 · КОНТАКТ</div>
+    <h2>ЕСТЬ ЗАДАЧА?<br><span>ДАВАЙТЕ СОБЕРЁМ РЕШЕНИЕ.</span></h2>
+    <p>Можно начать с короткого разговора. Без готового технического задания и без необходимости заранее знать, каким должен быть результат.</p>
+
+    <div class="atlas-final__contacts" aria-label="Контакты">
+      <a class="atlas-contact" href="https://t.me/Fox_Old" target="_blank" rel="noopener">
+        <span class="atlas-contact__label">НАПИСАТЬ</span>
+        <span class="atlas-contact__value">@Fox_Old</span>
+        <b>→</b>
+      </a>
+
+      <a class="atlas-contact" href="tel:+79262887488">
+        <span class="atlas-contact__label">ПОЗВОНИТЬ</span>
+        <span class="atlas-contact__value">+7 926 288 74 88</span>
+        <b>→</b>
+      </a>
+
+      <a class="atlas-contact" href="mailto:ialexdenisoff@yandex.ru">
+        <span class="atlas-contact__label">ПОЧТА</span>
+        <span class="atlas-contact__value">ialexdenisoff@yandex.ru</span>
+        <b>→</b>
+      </a>
+    </div>
+
+    <div class="atlas-final__microcopy">Можно написать просто «Есть задача». Дальше разберёмся.</div>
+    <a class="atlas-final__cta" href="https://t.me/Fox_Old" target="_blank" rel="noopener" data-atlas-contact>
+      <span>ОБСУДИТЬ ПРОЕКТ</span><b>→</b>
+    </a>
+    <div class="atlas-final__signature">ALEX ATLAS <i></i> AUT VIAM INVENIAM, AUT FACIAM</div>
+  </div>
+</section>
+
+
+<style id="atlas-about-final-css">
+.atlas-about{
+  position:relative; overflow:hidden; box-sizing:border-box;
+  min-height:1120px; padding:92px clamp(34px,6vw,110px) 100px;
+  background:#f7f7f2; color:#173541;
+}
+.atlas-about__grid{
+  position:absolute; inset:0; opacity:.14; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(23,53,65,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(23,53,65,.07) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 82%,transparent 100%);
+}
+.atlas-about__eyebrow,.atlas-final__eyebrow{
+  position:relative; z-index:2; font-size:12px; letter-spacing:.25em; font-weight:700;
+  color:#d67b10; margin-bottom:34px;
+}
+.atlas-about__layout{
+  position:relative; z-index:2; max-width:1540px; margin:auto;
+  display:grid; grid-template-columns:minmax(520px,1.04fr) minmax(470px,.86fr);
+  gap:clamp(55px,6vw,105px); align-items:center;
+}
+.atlas-about__visual{
+  position:relative;
+  min-height:810px;
+  display:flex;
+  align-items:center;
+}
+.atlas-about__image-shell{
+  position:relative;
+  width:100%;
+  max-width:760px;
+  margin-left:-30px;
+  overflow:visible;
+  background:transparent;
+  box-shadow:none;
+}
+.atlas-about__image-shell:before{
+  content:"";
+  position:absolute;
+  inset:-2%;
+  z-index:2;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      #f7f7f2 0%,
+      rgba(247,247,242,.92) 2.5%,
+      rgba(247,247,242,.45) 7%,
+      rgba(247,247,242,0) 14%,
+      rgba(247,247,242,0) 82%,
+      rgba(247,247,242,.35) 91%,
+      #f7f7f2 100%),
+    linear-gradient(180deg,
+      #f7f7f2 0%,
+      rgba(247,247,242,.5) 4%,
+      rgba(247,247,242,0) 12%,
+      rgba(247,247,242,0) 88%,
+      rgba(247,247,242,.55) 96%,
+      #f7f7f2 100%);
+}
+.atlas-about__image-shell:after{
+  content:"";
+  position:absolute;
+  inset:auto -8% -3% 50%;
+  height:45%;
+  z-index:3;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(247,247,242,0),rgba(247,247,242,.18) 44%,#f7f7f2 100%);
+}
+.atlas-about__image-shell img{
+  display:block;
+  width:100%;
+  height:auto;
+  border:0;
+  box-shadow:none;
+  filter:saturate(.95) contrast(1.01);
+  -webkit-mask-image:
+    linear-gradient(to bottom,transparent 0%,#000 7%,#000 93%,transparent 100%);
+  mask-image:
+    linear-gradient(to bottom,transparent 0%,#000 7%,#000 93%,transparent 100%);
+}
+.atlas-about__scan{
+  position:absolute; top:3%; bottom:3%; left:-16%; width:12%;
+  opacity:0; pointer-events:none; z-index:4;
+  background:linear-gradient(90deg,transparent,rgba(255,180,70,.12),rgba(255,245,215,.62),rgba(255,180,70,.10),transparent);
+  filter:blur(4px); transform:skewX(-4deg);
+}
+.atlas-about.is-visible .atlas-about__scan{
+  animation:atlasAboutScan 2.8s cubic-bezier(.2,.7,.2,1) .35s 1 forwards;
+}
+@keyframes atlasAboutScan{
+  0%{left:-16%;opacity:0} 12%{opacity:.72} 82%{opacity:.45} 100%{left:108%;opacity:0}
+}
+.atlas-about__copy{
+  max-width:700px;
+  padding-right:10px;
+}
+.atlas-about__copy h2{
+  margin:0;
+  font-size:clamp(46px,4.2vw,72px);
+  line-height:.94;
+  letter-spacing:-.045em;
+  font-weight:800;
+  max-width:690px;
+}
+.atlas-about__copy h2 .line{
+  display:block;
+  white-space:nowrap;
+}
+.atlas-about__accent{
+  margin:24px 0 39px;
+  font-size:clamp(17px,1.4vw,23px);
+  line-height:1.3;
+  letter-spacing:.055em;
+  font-weight:750;
+  color:#e78a17;
+}
+.atlas-about__story{display:grid;gap:13px}
+.atlas-about__story p{
+  margin:0;
+  font-size:clamp(16px,1.12vw,19px);
+  line-height:1.62;
+  color:#51646b;
+}
+.atlas-about__story strong{color:#173541;font-weight:700}
+.atlas-about__divider{
+  width:82px;height:2px;margin:38px 0 32px;
+  background:linear-gradient(90deg,#ef8b15,rgba(239,139,21,0));
+}
+.atlas-about__lead{
+  max-width:610px;margin:0 0 20px;font-size:17px;line-height:1.6;color:#66757a;
+}
+.atlas-about__copy h3{
+  margin:0;
+  font-size:clamp(25px,2.05vw,36px);
+  line-height:1.08;
+  letter-spacing:-.025em;
+  font-weight:800;
+  max-width:680px;
+}
+
+.atlas-final{
+  position:relative; overflow:hidden; box-sizing:border-box;
+  min-height:720px; display:flex; align-items:center;
+  padding:100px clamp(34px,8vw,150px);
+  background:#173541; color:#f7f7f2;
+}
+.atlas-final:before{
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:.16;
+  background-image:
+    linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);
+  background-size:80px 80px;
+}
+.atlas-final__orb{
+  position:absolute; right:-12vw; top:50%; width:min(62vw,920px); aspect-ratio:1;
+  transform:translateY(-50%); border:1px solid rgba(247,247,242,.16); border-radius:50%;
+}
+.atlas-final__orb:before,.atlas-final__orb:after{
+  content:""; position:absolute; border-radius:50%; border:1px solid rgba(242,138,19,.28);
+}
+.atlas-final__orb:before{inset:13%}
+.atlas-final__orb:after{inset:29%;box-shadow:0 0 80px rgba(242,138,19,.08)}
+.atlas-final__content{position:relative;z-index:2;max-width:980px}
+.atlas-final__eyebrow{color:#f2a13a;margin-bottom:34px}
+.atlas-final h2{
+  margin:0; font-size:clamp(50px,6.5vw,105px); line-height:.91;
+  letter-spacing:-.055em; font-weight:800;
+}
+.atlas-final h2 span{color:#f2a13a}
+.atlas-final p{
+  max-width:720px; margin:35px 0 42px; font-size:clamp(17px,1.3vw,21px);
+  line-height:1.55; color:rgba(247,247,242,.72);
+}
+.atlas-final__cta{
+  display:inline-flex; align-items:center; gap:32px; min-width:270px;
+  padding:18px 22px 18px 26px; border:1px solid rgba(247,247,242,.3);
+  color:#f7f7f2; text-decoration:none; font-size:13px; letter-spacing:.12em; font-weight:750;
+  transition:background .25s ease,border-color .25s ease,transform .25s ease;
+}
+.atlas-final__cta b{font-size:24px;color:#f2a13a;transition:transform .25s ease}
+.atlas-final__cta:hover{background:rgba(255,255,255,.055);border-color:#f2a13a;transform:translateY(-2px)}
+.atlas-final__cta:hover b{transform:translateX(6px)}
+.atlas-final__signature{
+  margin-top:86px; display:flex; align-items:center; gap:15px;
+  font-size:10px; letter-spacing:.22em; color:rgba(247,247,242,.43);
+}
+.atlas-final__signature i{display:inline-block;width:42px;height:1px;background:#f2a13a}
+
+@media(max-width:1180px){
+  .atlas-about__layout{grid-template-columns:minmax(430px,1fr) minmax(400px,.9fr);gap:45px}
+  .atlas-about__copy h2{font-size:52px}
+}
+@media(max-width:980px){
+  .atlas-about{min-height:auto;padding:75px 25px 82px}
+  .atlas-about__layout{grid-template-columns:1fr;gap:45px}
+  .atlas-about__visual{order:2;min-height:auto}
+  .atlas-about__copy{order:1;max-width:none}
+  .atlas-about__image-shell{max-width:680px;margin:0 auto}
+  .atlas-about__copy h2 .line{white-space:normal}
+  .atlas-final{min-height:650px;padding:85px 26px}
+  .atlas-final__orb{width:100vw;right:-55vw}
+
+  .atlas-final__contacts{grid-template-columns:1fr;margin-top:18px}
+  .atlas-contact{
+    min-height:88px;
+    border-right:0;
+    border-bottom:1px solid rgba(247,247,242,.14);
+    padding:18px 46px 17px 0;
+  }
+  .atlas-contact:last-child{border-bottom:0}
+}
+@media(max-width:560px){
+  .atlas-about__eyebrow{margin-bottom:28px}
+  .atlas-about__copy h2{font-size:38px}
+  .atlas-about__copy h3{font-size:25px}
+  .atlas-about__story p{font-size:15px}
+  .atlas-final h2{font-size:47px}
+  .atlas-final__signature{font-size:8px;line-height:1.6;flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){
+  .atlas-about__scan{display:none}
+}
+</style>
+
+
+<script id="atlas-about-final-js">
+(() => {
+  const about = document.querySelector('.atlas-about');
+  if (!about) return;
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      if (entries[0] && entries[0].isIntersecting) {
+        about.classList.add('is-visible');
+        io.disconnect();
+      }
+    }, {threshold:.32});
+    io.observe(about);
+  } else {
+    about.classList.add('is-visible');
+  }
+})();
+</script>
+
+
+<style id="atlas-task-selector-fixed-css">
+/* Меню второго блока остаётся именно меню — ничего не скрываем и не перестраиваем. */
+.method-copy .tasks{
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+.method-copy .tasks button{
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+aside.panel{
+  transition:opacity .18s ease, transform .18s ease;
+}
+aside.panel.task-panel-changing{
+  opacity:.12;
+  transform:translateY(4px);
+}
+</style>
+
+
+<script id="atlas-task-selector-fixed">
+(() => {
+  const buttons = Array.from(document.querySelectorAll('.method-copy .tasks button'));
+  const panel = document.querySelector('aside.panel');
+  if (buttons.length !== 4 || !panel) return;
+
+  const title = panel.querySelector('h3');
+  const description = panel.querySelector(':scope > p');
+  const list = panel.querySelector('ul');
+
+  const variants = [
+    {
+      title: 'ЗАПУСТИТЬ ИДЕЮ',
+      description: 'Разберём, кому и зачем нужен будущий продукт — до того, как начнём тратить деньги на его оформление.',
+      items: [
+        'Изучим рынок и конкурентов',
+        'Проведём интервью и уточним задачу',
+        'Предложим 2–3 стратегии запуска'
+      ]
+    },
+    {
+      title: 'ПЕРЕУПАКОВАТЬ ПРОДУКТ',
+      description: 'Разберём существующий продукт и найдём, что мешает человеку быстро понять его ценность.',
+      items: [
+        'Проверим текущую подачу и позиционирование',
+        'Найдём слабые места и главное преимущество',
+        'Соберём новую структуру и образ продукта'
+      ]
+    },
+    {
+      title: 'СОЗДАТЬ САЙТ',
+      description: 'Сначала определим, какую задачу должен решать сайт, а уже потом соберём структуру, содержание и визуальную систему.',
+      items: [
+        'Продумaем путь пользователя и структуру',
+        'Соберём тексты и визуальное направление',
+        'Реализуем интерфейс и нужную механику'
+      ]
+    },
+    {
+      title: 'НАЙТИ ОТЛИЧИЕ',
+      description: 'Найдём реальную точку отличия — не искусственный слоган, а то, что можно превратить в понятную ценность для человека.',
+      items: [
+        'Разберём рынок и похожие предложения',
+        'Найдём сильные факты, опыт или подход',
+        'Переведём отличие в ясное позиционирование'
+      ]
+    }
+  ];
+
+  function switchTask(index) {
+    const item = variants[index];
+    if (!item) return;
+
+    buttons.forEach((btn, i) => {
+      const active = i === index;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
+    panel.classList.add('task-panel-changing');
+
+    window.setTimeout(() => {
+      title.textContent = item.title;
+      description.textContent = item.description;
+      list.innerHTML = item.items.map(text => `<li>${text}</li>`).join('');
+      panel.classList.remove('task-panel-changing');
+    }, 120);
+  }
+
+  buttons.forEach((button, index) => {
+    button.type = 'button';
+    button.addEventListener('click', () => switchTask(index));
+  });
+
+  // Первый пункт соответствует исходному содержимому.
+  buttons.forEach((btn, i) => btn.setAttribute('aria-pressed', i === 0 ? 'true' : 'false'));
+})();
+</script>
+
+
+<style id="atlas-lead-form-css">
+.atlas-lead-status{
+  min-height:18px;
+  margin-top:8px;
+  font-size:12px;
+  line-height:1.35;
+  color:#5e737c;
+}
+.atlas-lead-status.ok{color:#23766f;font-weight:700}
+.atlas-lead-status.err{color:#b04b45;font-weight:700}
+#atlasLeadSubmit:disabled{opacity:.65;cursor:wait}
+</style>
+
+
+<script id="atlas-lead-form-js">
+(() => {
+  const form = document.getElementById('atlasLeadForm');
+  if (!form) return;
+
+  const nameEl = document.getElementById('atlasLeadName');
+  const contactEl = document.getElementById('atlasLeadContact');
+  const submit = document.getElementById('atlasLeadSubmit');
+  const status = document.getElementById('atlasLeadStatus');
+  const panelTitle = document.querySelector('aside.panel h3');
+
+  function setStatus(text,type=''){
+    status.textContent = text;
+    status.className = 'atlas-lead-status' + (type ? ' ' + type : '');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = (nameEl.value || '').trim();
+    const contact = (contactEl.value || '').trim();
+    const task = panelTitle ? panelTitle.textContent.trim() : '';
+
+    if (!contact){
+      setStatus('Укажите телефон или Telegram.','err');
+      contactEl.focus();
+      return;
+    }
+
+    submit.disabled = true;
+    const oldText = submit.textContent;
+    submit.textContent = 'ОТПРАВЛЯЕМ...';
+    setStatus('');
+
+    try{
+      const res = await fetch('atlas-send-disabled', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          name: name || 'не указано',
+          contact,
+          task,
+          page: location.href
+        })
+      });
+
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data || data.ok !== true){
+        throw new Error(data && data.error ? data.error : 'Ошибка отправки');
+      }
+
+      setStatus('Заявка отправлена. Я свяжусь с вами.','ok');
+      form.reset();
+    }catch(err){
+      setStatus('Не удалось отправить. Напишите мне в Telegram: @Fox_Old','err');
+    }finally{
+      submit.disabled = false;
+      submit.textContent = oldText;
+    }
+  });
+})();
+</script>
+
+</body>
 </html>
+<style>.tabs-three{grid-template-columns:repeat(3,minmax(0,1fr));max-width:440px}</style>
